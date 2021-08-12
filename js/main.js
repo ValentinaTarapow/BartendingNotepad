@@ -6,17 +6,16 @@ const onza = 30; //en ml
 class Trago{
     constructor(nombre, ingredientes){
         this.nombre = nombre;
-        this.ingredientes = ingredientes;
+        this.ingredientes = [];
         this.cristaleria = "";
     }
     mostrar(){
-        return("Holis trago")
-        // return( "\nNombre del trago: " + this.nombre + "\n\nIngrediente 1: " + this.ingredientes[0].mostrar() + "\nIngrediente 2: " + this.ingredientes[1].mostrar() + "\nIngrediente 3: " + this.ingredientes[2].mostrar() + this.tamanio() );
+        return( "\nNombre del trago: " + this.nombre + "\n\nIngrediente 1: " + this.ingredientes[0].mostrar() + "\nIngrediente 2: " + this.ingredientes[1].mostrar() + "\nIngrediente 3: " + this.ingredientes[2].mostrar() + this.tamanio() );
     }
 
     tamanio(){
         let totalOnzas = 0;
-        for(const element of ingredientes){
+        for(const element of this.ingredientes){
             totalOnzas = totalOnzas + element.cantOz;
         }
 
@@ -41,12 +40,13 @@ class Trago{
             this.cristaleria = "balde";
         }
 
-        return ("Holis tamanio")
-        // return ( "\n\nEste trago tiene: " + enOnza + "oz = " + enMl + "ml\n\nTe conviene ponerlo en: " + this.cristaleria );
+        return ( "\n\nEste trago tiene: " + totalOnzas + "oz = " + enMl + "ml\n\nTe conviene ponerlo en: " + this.cristaleria );
+    }
+
+    addIngredient(data){
+        this.ingredientes.push(data)
     }
 }
-
-
 
 class Ingrediente{
     constructor(nombre, cantOz){
@@ -54,17 +54,9 @@ class Ingrediente{
         this.cantOz = cantOz;
     }
     mostrar(){
-        // return( this.nombre + " - " + this.cantOz + "oz" );
-        return ("Holis ingrediente")
+        return( this.nombre + " - " + this.cantOz + "oz" );
     }
 }
-
-// CREO LOS OBJETOS 
-let Ingredientes = [];
-Ingredientes.push(Ingrediente1, Ingrediente2, Ingrediente3);
-const tuTrago = new Trago("", Ingredientes);
-
-
 
 // ------------ FUNCIONES ------------
 
@@ -73,20 +65,19 @@ function ingresarUsuario(){
     return validarTexto(nombreUsuario, ingresarUsuario);
 }
 
-function ingresarTrago(){
+function ingresarTrago(trago){
     // Funcion que llama 3 veces a ingresar ingrediente e ingresar cantidad
     alert("🍸Crearemos un trago de 3 ingredientes.🍸");
     
     const cantIngredientes = 3;
     let nombreIngrediente, cantOz;
-
-    for(let i=0;i<cantIngredientes;i++){
-        nombreIngrediente = ingresarIngrediente((i+1));
-        cantOz = parseFloat(ingresarOnzas());
-
-        Ingredientes[i].nombre = nombreIngrediente;
-        Ingredientes[i].cantOz = cantOz;
-
+    let index = 1;
+    for(const element of trago.ingredientes){
+            nombreIngrediente = ingresarIngrediente(index);
+            cantOz = parseFloat(ingresarOnzas());
+            element.nombre = nombreIngrediente;
+            element.cantOz = cantOz;
+            index++;
     }
 
     tuTrago.nombre = prompt("¿Que nombre tendrá este trago?");
@@ -104,6 +95,13 @@ function ingresarOnzas(){
     return validarNumero(cantOnzas, ingresarOnzas);
 }
 
+
+function imprimirInfo(trago){
+    alert( "🍸¡Terminamos, " + nombreUsuario + "!🍸\n" + trago.mostrar() );
+}
+
+
+// VALIDACIONES
 function validarTexto(value, callback, index){
     // analiza que el campo no haya sido llenado con numeros o que este vacio
     if( (!(isNaN(value))) || (value==null) || (value=="") ){
@@ -124,15 +122,22 @@ function validarNumero(value, callback){
     }
 }
 
-// const sumaOz = function (ingr1,ingr2,ingr3) { return  ingr1 + ingr2 + ingr3 }; //suma las onzas
+
+// ----------EJECUCION----------
+
+// CREO LOS OBJETOS 
+
+const Ingrediente1 = new Ingrediente();
+const Ingrediente2 = new Ingrediente();
+const Ingrediente3 = new Ingrediente();
+
+const tuTrago = new Trago();
+
+tuTrago.addIngredient(Ingrediente1);
+tuTrago.addIngredient(Ingrediente2);
+tuTrago.addIngredient(Ingrediente3);
 
 
-function imprimirInfo(){
-    alert( "🍸¡Terminamos, " + nombreUsuario + "!🍸\n" + tuTrago.mostrar() );
-}
-
-
-// ------------ EJECUCION ------------
 ingresarUsuario();
-ingresarTrago();
-imprimirInfo();
+ingresarTrago(tuTrago);
+imprimirInfo(tuTrago);

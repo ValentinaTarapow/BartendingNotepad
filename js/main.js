@@ -46,6 +46,19 @@ class Trago{
     addIngredient(data){
         this.ingredientes.push(data)
     }
+
+    ordenarXoz(){
+        var ordenadoXoz = [];
+        ordenadoXoz = this.ingredientes.map(elemento => elemento);
+        var ordenadoXoz = this.ingredientes;
+        ordenadoXoz.sort(function(a,b){
+            return a.cantOz - b.cantOz;
+        });
+        console.log("En orden ascendente por Oz: ")
+        for(var elemento of ordenadoXoz){
+            console.log(elemento.mostrar());
+        }
+    }
 }
 
 class Ingrediente{
@@ -141,3 +154,4 @@ tuTrago.addIngredient(Ingrediente3);
 ingresarUsuario();
 ingresarTrago(tuTrago);
 imprimirInfo(tuTrago);
+tuTrago.ordenarXoz();

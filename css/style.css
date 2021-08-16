@@ -1,14 +1,89 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth; }
 
 #brand {
-  color: #952BDB; }
+  color: #F23545;
+  font-family: 'Major Mono Display', monospace;
+  font-weight: bold;
+  font-size: 2rem; }
 
 body {
-  background-color: #0D0D0D;
-  color: white; }
+  background-color: #F2F2F2;
+  color: #0D0D0D;
+  font-family: 'Rajdhani', sans-serif; }
 
 nav {
-  background-color: #0E1519; }
+  background-color: #0D0D0D;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase; }
+
+/*Boton*/
+.btn-push {
+  border-radius: 4px;
+  border: #850913 solid 1px;
+  background-color: #F23545;
+  padding: 20px 40px;
+  font-weight: bold; }
+  .btn-push a {
+    color: black;
+    text-decoration: none; }
+    .btn-push a:visited {
+      color: unset; }
+  .btn-push span {
+    display: inline-block;
+    position: relative;
+    transition: 0.5s; }
+    .btn-push span::after {
+      content: '»';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s; }
+  .btn-push:hover span {
+    padding-right: 25px; }
+    .btn-push:hover span::after {
+      opacity: 1;
+      right: 0; }
+
+fieldset {
+  display: flex;
+  flex-direction: column; }
+  fieldset .action-button {
+    width: 10%;
+    background-color: #F23545;
+    border: #403E3F 2px solid;
+    border-radius: 3px; }
+  fieldset .btn-section {
+    width: 100%;
+    display: flex;
+    justify-content: center; }
+
+footer {
+  background-color: #0D0D0D;
+  color: #FFFFFF;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.section-divided {
+  width: 50%;
+  margin: 5rem;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 4px;
+  border: black solid 2px;
+  background-color: #a6a4a5; }
+  .section-divided h1 {
+    margin-bottom: 1rem;
+    background-color: #F23545;
+    text-decoration: underline; }

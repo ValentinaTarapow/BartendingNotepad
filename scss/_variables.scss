@@ -1,16 +1,11 @@
 //Colores
 $colores:
     #0D0D0D,//1
-    #3A3240,//2
-    #6B6673,//3
-    #9C9CA6,//4
-    #D0D1D9,//5
-    #ffffff,//6
-    #0E1519,//7
-    #F2F2F2,//8
-    #952BDB,//9
-    #73736C,//10
-    #BEBFB4;//11
+    #F23545,//2
+    #403E3F,//3
+    #F2F2F2,//4
+    #FFFFFF;//5
+
 
     //Abreviacion
     $color1: nth($colores ,1);
@@ -18,13 +13,6 @@ $colores:
     $color3: nth($colores, 3);
     $color4: nth($colores, 4);
     $color5: nth($colores, 5);
-    $color6: nth($colores, 6);
-    $color7: nth($colores, 7);
-    $color8: nth($colores, 8);
-    $color9: nth($colores, 9);
-    $color10: nth($colores, 10);
-    $color11: nth($colores, 11);
-
 
 
 // Bordes

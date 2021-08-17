@@ -4,16 +4,29 @@
   padding: 0;
   scroll-behavior: smooth; }
 
+body {
+  background-color: #F2F2F2;
+  color: #0D0D0D;
+  font-family: 'Rajdhani', sans-serif; }
+
+.section-divided {
+  width: 50%;
+  margin: 5rem;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 4px;
+  border: black solid 2px;
+  background-color: #a6a4a5; }
+  .section-divided h1 {
+    margin-bottom: 1rem;
+    background-color: #F23545;
+    text-decoration: underline; }
+
 #brand {
   color: #F23545;
   font-family: 'Major Mono Display', monospace;
   font-weight: bold;
   font-size: 2rem; }
-
-body {
-  background-color: #F2F2F2;
-  color: #0D0D0D;
-  font-family: 'Rajdhani', sans-serif; }
 
 nav {
   background-color: #0D0D0D;
@@ -21,7 +34,6 @@ nav {
   font-weight: bold;
   text-transform: uppercase; }
 
-/*Boton*/
 .btn-push {
   border-radius: 4px;
   border: #850913 solid 1px;
@@ -52,7 +64,9 @@ nav {
 
 fieldset {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
   fieldset .action-button {
     width: 10%;
     background-color: #F23545;
@@ -62,6 +76,70 @@ fieldset {
     width: 100%;
     display: flex;
     justify-content: center; }
+  fieldset .fs-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    background-color: #F23545;
+    text-decoration: underline; }
+
+/*progressbar*/
+#progressbar {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  counter-reset: step; }
+
+#progressbar li {
+  list-style-type: none;
+  color: #0D0D0D;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  width: 10%;
+  float: left;
+  position: relative; }
+
+#progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 2rem;
+  display: block;
+  background: #F23545;
+  border-radius: 3px;
+  margin: 0 auto 5px auto; }
+
+/*progressbar connectors*/
+#progressbar li:after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #403E3F;
+  position: absolute;
+  left: -50%;
+  top: 9px;
+  z-index: -1;
+  /*put it behind the numbers*/ }
+
+#progressbar li:first-child:after {
+  /*connector not needed before the first step*/
+  content: none; }
+
+#new-cocktail {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  #new-cocktail .section-divided {
+    width: 30%;
+    margin: 0;
+    margin-bottom: 20px; }
+    #new-cocktail .section-divided input {
+      margin-top: 0;
+      margin-bottom: 5px; }
 
 footer {
   background-color: #0D0D0D;
@@ -74,16 +152,3 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center; }
-
-.section-divided {
-  width: 50%;
-  margin: 5rem;
-  padding: 2rem;
-  text-align: center;
-  border-radius: 4px;
-  border: black solid 2px;
-  background-color: #a6a4a5; }
-  .section-divided h1 {
-    margin-bottom: 1rem;
-    background-color: #F23545;
-    text-decoration: underline; }

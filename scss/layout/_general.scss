@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: $color4;
+    color: $color1;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.section-divided{
+    width: 50%;
+    margin: 5rem;
+    padding: 2rem;
+    text-align: center;
+    
+    border-radius: 4px;
+    border: black solid 2px;
+    background-color:   lighten($color3, 40%) ;
+    h1{
+        margin-bottom: 1rem;
+        background-color: $color2;
+        text-decoration: underline ;
+    }
+}

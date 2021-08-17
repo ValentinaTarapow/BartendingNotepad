@@ -1,31 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-}
-
-#brand{
-    color: $color2;
-    font-family: 'Major Mono Display', monospace;
-    font-weight: bold;
-    font-size: 2rem;
-}
-
-body{
-    background-color: $color4;
-    color: $color1;
-    font-family: 'Rajdhani', sans-serif;
-}
-
-
-nav{
-    background-color: $color1;
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-/*Boton*/
 .btn-push{
     border-radius: 4px;
     border: darken($color2 , 30%) solid 1px;
@@ -40,6 +12,7 @@ nav{
             color: unset;
         }
     }
+
     span{
         display: inline-block;
         position: relative;
@@ -65,9 +38,10 @@ nav{
 }
 
 fieldset{
-    // border 2px solid;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     .action-button{
         width: 10%;
         background-color: $color2;
@@ -79,34 +53,12 @@ fieldset{
         display: flex;
         justify-content: center;
     }
-}
-
-footer{
-    background-color: $color1;
-    color: $color5;
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    width: 100%;
-    height: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.section-divided{
-
-    width: 50%;
-    margin: 5rem;
-    padding: 2rem;
-    text-align: center;
-    
-    border-radius: 4px;
-    border: black solid 2px;
-    background-color:   lighten($color3, 40%) ;
-    h1{
+    .fs-title{
+        font-size: 2rem;
         margin-bottom: 1rem;
         background-color: $color2;
         text-decoration: underline ;
     }
 }
+
+

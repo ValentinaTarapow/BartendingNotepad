@@ -1,0 +1,21 @@
+//Colores
+$colores:
+    #0D0D0D,//1
+    #F23545,//2
+    #403E3F,//3
+    #F2F2F2,//4
+    #FFFFFF;//5
+
+
+    //Abreviacion
+    $color1: nth($colores ,1);
+    $color2: nth($colores, 2);
+    $color3: nth($colores, 3);
+    $color4: nth($colores, 4);
+    $color5: nth($colores, 5);
+
+
+// Bordes
+$borde-basic: solid $color1 3px;
+$borde-detail: dashed $color1 3px;
+

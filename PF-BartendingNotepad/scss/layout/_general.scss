@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: $color4;
+    color: $color1;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.section-divided{
+    width: 50%;
+    margin: 5rem;
+    padding: 2rem;
+    text-align: center;
+    
+    border-radius: 3px;
+    // border: black solid 2px;
+    box-shadow: 10px 10px 5px 1px rgba(64,62,63,1);
+    -webkit-box-shadow: 10px 10px 5px 1px rgba(64,62,63,1);
+    -moz-box-shadow: 10px 10px 5px 1px rgba(64,62,63,1);
+    // background-color:   lighten($color3, 40%) ;
+    background-color:   lighten($color1, 5);
+    color: $color5;
+    h1{
+        margin-bottom: 1rem;
+        background-color: $color2;
+        text-decoration: underline ;
+    }
+}

@@ -9,17 +9,19 @@ class Trago{
         this.ingredientes = [];
         this.cristaleria = "";
     }
+
     mostrar(){
         return( "\nNombre del trago: " + this.nombre + "\n\nIngrediente 1: " + this.ingredientes[0].mostrar() + "\nIngrediente 2: " + this.ingredientes[1].mostrar() + "\nIngrediente 3: " + this.ingredientes[2].mostrar() + this.tamanio() );
     }
 
     tamanio(){
         let totalOnzas = 0;
+        let enMl;
+
         for(const element of this.ingredientes){
             totalOnzas = totalOnzas + element.cantOz;
         }
-
-        let enMl = totalOnzas * onza;
+        enMl = totalOnzas * onza;
 
         if(enMl<60){
             this.cristaleria = "shot";
@@ -44,19 +46,22 @@ class Trago{
     }
 
     addIngredient(data){
+        // Luego el usuario va a poder elegir cuantos ingredientes desee
         this.ingredientes.push(data)
     }
 
     ordenarXoz(){
-        var ordenadoXoz = [];
-        ordenadoXoz = this.ingredientes.map(elemento => elemento);
-        var ordenadoXoz = this.ingredientes;
-        ordenadoXoz.sort(function(a,b){
+        var ordenadosXoz = [];
+        var index = 1;
+        ordenadosXoz = this.ingredientes.map(elemento => elemento);
+        var ordenadosXoz = this.ingredientes;
+        ordenadosXoz.sort(function(a,b){
             return a.cantOz - b.cantOz;
         });
-        console.log("En orden ascendente por Oz: ")
-        for(var elemento of ordenadoXoz){
-            console.log(elemento.mostrar());
+        console.log("Ingredientes en orden ascendente por Oz")
+        for(var elemento of ordenadosXoz){
+            console.log(index + ": " + elemento.mostrar());
+            index++;
         }
     }
 }
@@ -66,6 +71,7 @@ class Ingrediente{
         this.nombre = nombre;
         this.cantOz = cantOz;
     }
+
     mostrar(){
         return( this.nombre + " - " + this.cantOz + "oz" );
     }
@@ -150,7 +156,7 @@ tuTrago.addIngredient(Ingrediente1);
 tuTrago.addIngredient(Ingrediente2);
 tuTrago.addIngredient(Ingrediente3);
 
-
+// LLAMO A LAS FUNCIONES O METODOS
 ingresarUsuario();
 ingresarTrago(tuTrago);
 imprimirInfo(tuTrago);

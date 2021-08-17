@@ -2,7 +2,7 @@
     color: $color2;
     font-family: 'Major Mono Display', monospace;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 2.2rem;
 }
 
 nav{
@@ -10,4 +10,16 @@ nav{
     font-family: 'Rajdhani', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
+    li{
+        .nav-link{
+            padding-bottom: 0px;
+            margin-bottom: 8px;
+        }
+        a{
+            &:hover{
+                border-bottom: 2px solid $color2 !important;
+            }
+        }
+    }
 }
+

@@ -1,5 +1,5 @@
 # BartendingNotepad
-https://valentinatarapow.github.io/BartendingNotepad/
+
 <h1 align="center">Hi 👋, I'm Valentina</h1>
 <h3 align="center">A passionate and commited developer from Argentina</h3>
 

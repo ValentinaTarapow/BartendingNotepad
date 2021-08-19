@@ -4,14 +4,22 @@ const onza = 30; //en ml
 
 // ------------ CLASES ------------
 class Trago{
-    constructor(nombre, ingredientes){
-        this.nombre = nombre;
+    constructor(nombre){
+        this.nombre = nombre ;
         this.ingredientes = [];
         this.cristaleria = "";
     }
 
     mostrar(){
-        return( "\nNombre del trago: " + this.nombre + "\n\nIngrediente 1: " + this.ingredientes[0].mostrar() + "\nIngrediente 2: " + this.ingredientes[1].mostrar() + "\nIngrediente 3: " + this.ingredientes[2].mostrar() + this.tamanio() );
+        // primero guardo los ingredientes
+        let stringIngredientes = "";
+        let index = 1;
+        for(var elemento of this.ingredientes){
+            stringIngredientes = stringIngredientes + "Ingrediente " + index + ": " + elemento.mostrar() + "\n";
+            index++;
+        }
+
+        return( "\nNombre del trago: " + this.nombre + "\n\n" + stringIngredientes + this.tamanio());
     }
 
     tamanio(){
@@ -46,34 +54,35 @@ class Trago{
     }
 
     addIngredient(data){
-        // Luego el usuario va a poder elegir cuantos ingredientes desee
-        this.ingredientes.push(data)
+        this.ingredientes.push(data);
     }
 
-    ordenarXoz(){
-        var ordenadosXoz = [];
+    ordenarXgraduacion(){
+        var ordenadosXgraduacion = [];
         var index = 1;
-        ordenadosXoz = this.ingredientes.map(elemento => elemento);
-        var ordenadosXoz = this.ingredientes;
-        ordenadosXoz.sort(function(a,b){
-            return a.cantOz - b.cantOz;
+        let stringOrdenado = "";
+        ordenadosXgraduacion = this.ingredientes.map(elemento => elemento);
+        var ordenadosXgraduacion = this.ingredientes;
+        ordenadosXgraduacion.sort(function(a,b){
+            return a.graduacionAlcoholica - b.graduacionAlcoholica;
         });
-        console.log("Ingredientes en orden ascendente por Oz")
-        for(var elemento of ordenadosXoz){
-            console.log(index + ": " + elemento.mostrar());
+        for(var elemento of ordenadosXgraduacion){
+            stringOrdenado = stringOrdenado + index + ": " + elemento.mostrar() + "\n";
             index++;
         }
+        alert("Ingredientes en orden ascendente por graduacion alcoholica \n" + stringOrdenado);
     }
 }
 
 class Ingrediente{
-    constructor(nombre, cantOz){
+    constructor(nombre, cantOz, graduacionAlcoholica){
         this.nombre = nombre;
         this.cantOz = cantOz;
+        this.graduacionAlcoholica = graduacionAlcoholica;
     }
 
     mostrar(){
-        return( this.nombre + " - " + this.cantOz + "oz" );
+        return( this.nombre + " (" + this.graduacionAlcoholica +"% Alc/Vol)" + " - " + this.cantOz + "oz" );
     }
 }
 
@@ -85,33 +94,52 @@ function ingresarUsuario(){
 }
 
 function ingresarTrago(trago){
-    // Funcion que llama 3 veces a ingresar ingrediente e ingresar cantidad
-    alert("🍸Crearemos un trago de 3 ingredientes.🍸");
-    
-    const cantIngredientes = 3;
-    let nombreIngrediente, cantOz;
+    let cantIngredientes = cantidadIngredientes();
+    // let nombreIngrediente, cantOz, gradAlc;
     let index = 1;
+
+    for(let i=0;i<cantIngredientes;i++){
+        const ingredienteVacio = new Ingrediente();//ingrediente vacio para ir haciendo lugar en el array
+        trago.addIngredient(ingredienteVacio);
+    }
+
     for(const element of trago.ingredientes){
-            nombreIngrediente = ingresarIngrediente(index);
-            cantOz = parseFloat(ingresarOnzas());
-            element.nombre = nombreIngrediente;
-            element.cantOz = cantOz;
+            // nombreIngrediente = ingresarNomIngrediente(index);
+            // cantOz = parseFloat(ingresarOnzasIngrediente());
+            // gradAlc = parseFloat(ingresarGraduacionAlcoholica());
+            // element.nombre = nombreIngrediente;
+            // element.cantOz = cantOz;
+            // element.graduacionAlcoholica = gradAlc;
+            element.nombre = ingresarNomIngrediente(index);
+            element.cantOz =parseFloat(ingresarOnzasIngrediente());
+            element.graduacionAlcoholica = parseFloat(ingresarGraduacionAlcoholica());
+
             index++;
     }
 
     tuTrago.nombre = prompt("¿Que nombre tendrá este trago?");
 }
 
-function ingresarIngrediente(index){
-    // le pide al usuario el nombre del ingrediente y lo valida
-    let nombreIngrediente = prompt("Ingrese el nombre del Ingrediente " + index);
-    return validarTexto(nombreIngrediente,ingresarIngrediente,index);
+function cantidadIngredientes(){
+    let cantIngredientes = parseInt(prompt("¿Cuantos ingredientes tendrá este trago?"));
+    return validarNumero(cantIngredientes,cantidadIngredientes);
 }
 
-function ingresarOnzas(){
+function ingresarNomIngrediente(index){
+    // le pide al usuario el nombre del ingrediente y lo valida
+    let nombreIngrediente = prompt("Ingrese el nombre del Ingrediente " + index);
+    return validarTexto(nombreIngrediente,ingresarNomIngrediente,index);
+}
+
+function ingresarOnzasIngrediente(){
     // le pide al usuario la cantidad de onzas y lo valida
     let cantOnzas = prompt("Ingrese la cant de onzas a poner\n(Recuerde que: 1oz = 30ml)");
-    return validarNumero(cantOnzas, ingresarOnzas);
+    return validarNumero(cantOnzas, ingresarOnzasIngrediente);
+}
+
+function ingresarGraduacionAlcoholica(){
+    let gradAlc = prompt("Ingrese la graduacion alcoholica de este ingrediente");
+    return validarNumero(gradAlc,ingresarGraduacionAlcoholica);
 }
 
 
@@ -145,19 +173,10 @@ function validarNumero(value, callback){
 // ----------EJECUCION----------
 
 // CREO LOS OBJETOS 
-
-const Ingrediente1 = new Ingrediente();
-const Ingrediente2 = new Ingrediente();
-const Ingrediente3 = new Ingrediente();
-
 const tuTrago = new Trago();
-
-tuTrago.addIngredient(Ingrediente1);
-tuTrago.addIngredient(Ingrediente2);
-tuTrago.addIngredient(Ingrediente3);
 
 // LLAMO A LAS FUNCIONES O METODOS
 ingresarUsuario();
 ingresarTrago(tuTrago);
 imprimirInfo(tuTrago);
-tuTrago.ordenarXoz();
+tuTrago.ordenarXgraduacion();

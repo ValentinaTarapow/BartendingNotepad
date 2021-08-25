@@ -3,23 +3,12 @@ let nombreUsuario;
 const onza = 30; //en ml
 
 // ------------ CLASES ------------
+
 class Trago{
     constructor(nombre){
         this.nombre = nombre ;
         this.ingredientes = [];
         this.cristaleria = "";
-    }
-
-    mostrar(){
-        // primero guardo los ingredientes
-        let stringIngredientes = "";
-        let index = 1;
-        for(var elemento of this.ingredientes){
-            stringIngredientes = stringIngredientes + "Ingrediente " + index + ": " + elemento.mostrar() + "\n";
-            index++;
-        }
-
-        return( "\nNombre del trago: " + this.nombre + "\n\n" + stringIngredientes + this.tamanio());
     }
 
     tamanio(){
@@ -50,7 +39,8 @@ class Trago{
             this.cristaleria = "balde";
         }
 
-        return ( "\n\nEste trago tiene: " + totalOnzas + "oz = " + enMl + "ml\n\nTe conviene ponerlo en: " + this.cristaleria );
+        this.cristaleria = this.cristaleria.toUpperCase();
+        return (totalOnzas);
     }
 
     addIngredient(data){
@@ -95,7 +85,6 @@ function ingresarUsuario(){
 
 function ingresarTrago(trago){
     let cantIngredientes = cantidadIngredientes();
-    // let nombreIngrediente, cantOz, gradAlc;
     let index = 1;
 
     for(let i=0;i<cantIngredientes;i++){
@@ -104,12 +93,6 @@ function ingresarTrago(trago){
     }
 
     for(const element of trago.ingredientes){
-            // nombreIngrediente = ingresarNomIngrediente(index);
-            // cantOz = parseFloat(ingresarOnzasIngrediente());
-            // gradAlc = parseFloat(ingresarGraduacionAlcoholica());
-            // element.nombre = nombreIngrediente;
-            // element.cantOz = cantOz;
-            // element.graduacionAlcoholica = gradAlc;
             element.nombre = ingresarNomIngrediente(index);
             element.cantOz =parseFloat(ingresarOnzasIngrediente());
             element.graduacionAlcoholica = parseFloat(ingresarGraduacionAlcoholica());
@@ -144,7 +127,54 @@ function ingresarGraduacionAlcoholica(){
 
 
 function imprimirInfo(trago){
-    alert( "🍸¡Terminamos, " + nombreUsuario + "!🍸\n" + trago.mostrar() );
+    let index = 1;
+
+    let gridRecetas = document.getElementById("grid-recetario");
+    let receta = document.createElement("div");
+    receta.innerHTML = 
+        `
+        <h1>${trago.nombre}(${trago.tamanio()}oz)</h1>
+        <h2 class="d-inline">Cristaleria recomendada: </h2> 
+        <p class="d-inline"> ${trago.cristaleria} </p>
+        `;
+
+    let containerIng = document.createElement("ul");
+    containerIng.innerHTML=
+        `
+        <h2>Ingredientes:</h2>
+        `;
+    for(const element of trago.ingredientes){
+        let listItem = document.createElement("li");
+        listItem.innerHTML = 
+            `
+            <b>Ingrediente ${index}:</b> ${element.mostrar()};
+            `;
+        index++;
+        containerIng.appendChild(listItem)
+    }
+
+    let alertContainer = document.getElementById("alertZone");
+    let alertFin = document.createElement("div");
+    alertFin.innerHTML= 
+    `
+    <p><strong>🍸¡Terminamos, ${nombreUsuario}!🍸</strong> <br> Puedes ver tu nueva receta ↓</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+
+    receta.classList.add("card-trago");
+    receta.setAttribute("id","receta");
+
+    alertFin.classList.add("miAlerta")
+    alertFin.classList.add("alert");
+    alertFin.classList.add("alert-success");
+    alertFin.classList.add("alert-dismissible");
+    alertFin.classList.add("fade");
+    alertFin.classList.add("show");
+
+    gridRecetas.appendChild(receta);
+    receta.appendChild(containerIng);
+    alertContainer.appendChild(alertFin);
+
 }
 
 
@@ -179,4 +209,3 @@ const tuTrago = new Trago();
 ingresarUsuario();
 ingresarTrago(tuTrago);
 imprimirInfo(tuTrago);
-tuTrago.ordenarXgraduacion();

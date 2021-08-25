@@ -25,6 +25,46 @@ body {
     background-color: #F23545;
     text-decoration: underline; }
 
+#recetario main {
+  height: 80vh; }
+
+#alertZone {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+  #alertZone .miAlerta {
+    width: 30%; }
+    #alertZone .miAlerta p {
+      text-align: center;
+      margin: 0; }
+
+#grid-recetario {
+  margin: 20px;
+  width: 95vw;
+  display: grid;
+  grid-template-areas: "a a a";
+  grid-gap: 10px; }
+  #grid-recetario .card-trago {
+    padding: 20px;
+    border-radius: 4px;
+    width: 30vw;
+    background-color: #403E3F;
+    color: white;
+    font-size: 1rem;
+    border: black 3px solid; }
+    #grid-recetario .card-trago h1 {
+      font-size: 3rem;
+      color: black;
+      background-color: #F23545;
+      text-decoration: underline;
+      text-align: center; }
+    #grid-recetario .card-trago h2 {
+      font-size: 1.5rem;
+      color: #F23545;
+      text-decoration: underline; }
+
 #brand {
   color: #F23545;
   font-family: 'Major Mono Display', monospace;

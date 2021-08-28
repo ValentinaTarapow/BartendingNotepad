@@ -27,7 +27,7 @@
     <title>Bartending Notepad</title>
 </head>
 
-<body id="recetario">
+<body id="recipes-page">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
@@ -49,7 +49,7 @@
         </nav>
     </header>
 
-    <main id="recetario-main">
+    <main id="recipes-main">
         <section>
             <div class="operations w-100 mt-3 d-flex justify-content-evenly">
                 <div class="non-dangerous d-flex flex-row justify-content-around">
@@ -57,16 +57,16 @@
                         <input type="text" class="form-control" placeholder="Buscar...">
                         <button><i class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
-                    <button class="btn bg-success p-3"><i class="fa fa-plus" aria-hidden="true"> Nueva receta</i></button>
+                    <button class="btn bg-success p-3" id="btn-new-recipe"><i class="fa fa-plus" aria-hidden="true"> Nueva receta</i></button>
                 </div>
                 <div class="dangerous">
-                    <button class="btn bg-danger p-3"><i class="fa fa-trash" aria-hidden="true"> Borrar recetario</i></button>
+                    <button class="btn bg-danger p-3" id="btn-delete-all"><i class="fa fa-trash" aria-hidden="true"> Borrar recetario</i></button>
                 </div>
             </div>
 
             <div id="alertZone"></div>
 
-            <div id="grid-recetario"></div>
+            <div id="recipes-grid"></div>
 
         </section>
     </main>

@@ -129,13 +129,15 @@ function ingresarGraduacionAlcoholica(){
 function imprimirInfo(trago){
     let index = 1;
 
-    let gridRecetas = document.getElementById("grid-recetario");
-    let receta = document.createElement("div");
-    receta.innerHTML = 
+    let gridRecipes = document.getElementById("recipes-grid");
+    let recipe = document.createElement("div");
+    recipe.innerHTML = 
         `
         <h1>${trago.nombre}(${trago.tamanio()}oz)</h1>
-        <h2 class="d-inline">Cristaleria recomendada: </h2> 
-        <p class="d-inline"> ${trago.cristaleria} </p>
+        <div>
+            <h2 class="d-inline">Cristaleria recomendada: </h2> 
+            <p class="d-inline"> ${trago.cristaleria} </p>
+        </div>
         `;
 
     let containerIng = document.createElement("ul");
@@ -154,26 +156,26 @@ function imprimirInfo(trago){
     }
 
     let alertContainer = document.getElementById("alertZone");
-    let alertFin = document.createElement("div");
-    alertFin.innerHTML= 
+    let alertFinalized = document.createElement("div");
+    alertFinalized.innerHTML= 
     `
     <p><strong>🍸¡Terminamos, ${nombreUsuario}!🍸</strong> <br> Puedes ver tu nueva receta ↓</p>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     `;
 
-    receta.classList.add("card-trago");
-    receta.setAttribute("id","receta");
+    recipe.classList.add("card-recipe");
+    recipe.setAttribute("id","receta");
 
-    alertFin.classList.add("miAlerta")
-    alertFin.classList.add("alert");
-    alertFin.classList.add("alert-success");
-    alertFin.classList.add("alert-dismissible");
-    alertFin.classList.add("fade");
-    alertFin.classList.add("show");
+    alertFinalized.classList.add("miAlerta")
+    alertFinalized.classList.add("alert");
+    alertFinalized.classList.add("alert-success");
+    alertFinalized.classList.add("alert-dismissible");
+    alertFinalized.classList.add("fade");
+    alertFinalized.classList.add("show");
 
-    gridRecetas.appendChild(receta);
-    receta.appendChild(containerIng);
-    alertContainer.appendChild(alertFin);
+    gridRecipes.appendChild(recipe);
+    recipe.appendChild(containerIng);
+    alertContainer.appendChild(alertFinalized);
 
 }
 

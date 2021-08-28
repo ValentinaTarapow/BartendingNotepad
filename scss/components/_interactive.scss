@@ -1,64 +1,64 @@
-.btn-push{
-    border-radius: 4px;
-    border: darken($color2 , 30%) solid 1px;
-    background-color: $color2;
-    padding: 20px 40px;
-    font-weight: bold;
+// .btn-push{
+//     border-radius: 4px;
+//     border: darken($color2 , 30%) solid 1px;
+//     background-color: $color2;
+//     padding: 20px 40px;
+//     font-weight: bold;
 
-    a{
-        color: black;
-        text-decoration: none;
-        &:visited{
-            color: unset;
-        }
-    }
+//     a{
+//         color: black;
+//         text-decoration: none;
+//         &:visited{
+//             color: unset;
+//         }
+//     }
 
-    span{
-        display: inline-block;
-        position: relative;
-        transition: 0.5s;
-            &::after {
-            content: '»';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
-    }
-    &:hover{
-        span{
-            padding-right: 25px;
-            &::after{
-                opacity: 1;
-                right: 0;
-            }
-        }
-    }
-}
+//     span{
+//         display: inline-block;
+//         position: relative;
+//         transition: 0.5s;
+//             &::after {
+//             content: '»';
+//             position: absolute;
+//             opacity: 0;
+//             top: 0;
+//             right: -20px;
+//             transition: 0.5s;
+//         }
+//     }
+//     &:hover{
+//         span{
+//             padding-right: 25px;
+//             &::after{
+//                 opacity: 1;
+//                 right: 0;
+//             }
+//         }
+//     }
+// }
 
-fieldset{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .action-button{
-        width: 10%;
-        background-color: $color2;
-        border: $color3 2px solid;
-        border-radius: 3px;
-    }
-    .btn-section{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-    .fs-title{
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        background-color: $color2;
-        text-decoration: underline ;
-    }
-}
+// fieldset{
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     .action-button{
+//         width: 10%;
+//         background-color: $color2;
+//         border: $color3 2px solid;
+//         border-radius: 3px;
+//     }
+//     .btn-section{
+//         width: 100%;
+//         display: flex;
+//         justify-content: center;
+//     }
+//     .fs-title{
+//         font-size: 2rem;
+//         margin-bottom: 1rem;
+//         background-color: $color2;
+//         text-decoration: underline ;
+//     }
+// }
 
 

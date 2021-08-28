@@ -29,11 +29,10 @@ body{
     }
 }
 
-#recetario{
+#recipes-page{
     main{
         height: 80vh;
     }
-
 }  
 
 #alertZone{
@@ -51,7 +50,7 @@ body{
         }
     }
 
-#grid-recetario {
+#recipes-grid {
     margin: 20px;
     width: 95vw;
     display: grid;
@@ -61,7 +60,7 @@ body{
 
 
 
-    .card-trago{
+    .card-recipe{
         padding: 20px;
         border-radius: 4px;
         width: 30vw;
@@ -81,6 +80,5 @@ body{
             color: $color2;
             text-decoration: underline;
         }
-
     }
 }

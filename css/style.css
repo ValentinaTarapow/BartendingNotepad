@@ -24,9 +24,6 @@ body {
     background-color: #F23545;
     text-decoration: underline; }
 
-#recipes-page main {
-  height: 80vh; }
-
 #alertZone {
   margin-top: 10px;
   width: 100%;
@@ -46,23 +43,40 @@ body {
   grid-template-areas: "a a a";
   grid-gap: 10px; }
   #recipes-grid .card-recipe {
-    padding: 20px;
     border-radius: 4px;
     width: 30vw;
     background-color: #403E3F;
     color: white;
     font-size: 1rem;
     border: black 3px solid; }
-    #recipes-grid .card-recipe h1 {
-      font-size: 3rem;
-      color: black;
+    #recipes-grid .card-recipe #card-title {
       background-color: #F23545;
-      text-decoration: underline;
+      border-bottom: solid black;
       text-align: center; }
     #recipes-grid .card-recipe h2 {
+      font-size: 3rem;
+      color: black;
+      text-decoration: underline;
+      text-align: center; }
+    #recipes-grid .card-recipe h3 {
       font-size: 1.5rem;
       color: #F23545;
       text-decoration: underline; }
+    #recipes-grid .card-recipe #card-body {
+      padding: 5px;
+      background-color: white;
+      color: black; }
+    #recipes-grid .card-recipe #recipe-data {
+      width: 100%; }
+    #recipes-grid .card-recipe #recipe-operations {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-content: flex-end; }
+      #recipes-grid .card-recipe #recipe-operations button {
+        width: auto;
+        height: auto;
+        text-align: center; }
 
 #brand {
   color: #F23545;

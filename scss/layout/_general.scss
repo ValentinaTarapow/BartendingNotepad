@@ -31,7 +31,6 @@ body{
 
 #recipes-page{
     main{
-        height: 80vh;
     }
 }  
 
@@ -61,24 +60,51 @@ body{
 
 
     .card-recipe{
-        padding: 20px;
         border-radius: 4px;
         width: 30vw;
         background-color: $color3;
         color: white;        
         font-size: 1rem;
         border: black 3px solid;
-        h1{
-            font-size: 3rem;
-            color: black;
+
+        #card-title{
             background-color: $color2;
-            text-decoration: underline;
+            border-bottom: solid black;
             text-align: center;
         }
         h2{
+            font-size: 3rem;
+            color: black;
+            text-decoration: underline;
+            text-align: center;
+        }
+        h3{
             font-size: 1.5rem;
             color: $color2;
             text-decoration: underline;
+        }
+
+        #card-body{
+            padding: 5px;
+            background-color: white;
+            color: black;
+        }
+
+        #recipe-data{
+            width: 100%;
+        }
+
+        #recipe-operations{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-content: flex-end;    
+
+            button{
+                width: auto;
+                height: auto;
+                text-align: center;
+            }
         }
     }
 }

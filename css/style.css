@@ -24,17 +24,8 @@ body {
     background-color: #F23545;
     text-decoration: underline; }
 
-#alertZone {
-  margin-top: 10px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center; }
-  #alertZone .miAlerta {
-    width: 30%; }
-    #alertZone .miAlerta p {
-      text-align: center;
-      margin: 0; }
+#recipes-page button {
+  border: 1px solid black; }
 
 #recipes-grid {
   margin: 20px;
@@ -45,8 +36,7 @@ body {
   #recipes-grid .card-recipe {
     border-radius: 4px;
     width: 30vw;
-    background-color: #403E3F;
-    color: white;
+    background-color: white;
     font-size: 1rem;
     border: black 3px solid; }
     #recipes-grid .card-recipe #card-title {
@@ -66,17 +56,32 @@ body {
       padding: 5px;
       background-color: white;
       color: black; }
-    #recipes-grid .card-recipe #recipe-data {
-      width: 100%; }
-    #recipes-grid .card-recipe #recipe-operations {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-content: flex-end; }
-      #recipes-grid .card-recipe #recipe-operations button {
-        width: auto;
-        height: auto;
-        text-align: center; }
+      #recipes-grid .card-recipe #card-body #recipe-data {
+        width: 100%; }
+      #recipes-grid .card-recipe #card-body #recipe-operations {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-content: flex-end; }
+        #recipes-grid .card-recipe #card-body #recipe-operations button {
+          width: auto;
+          height: auto;
+          text-align: center;
+          margin: 2px; }
+
+#alertZone {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+  #alertZone .miAlerta {
+    width: 30%; }
+    #alertZone .miAlerta p {
+      text-align: center;
+      margin: 0; }
+    #alertZone .miAlerta button {
+      border: none; }
 
 #brand {
   color: #F23545;

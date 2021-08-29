@@ -11,14 +11,11 @@ class User{
     }
 }
 
-// REVISAR
-let recipes = [];
-
 class Trago{
     constructor(){
         this.nombre = "NuevoTrago" ;
         this.ingredientes = [];
-        this.cristaleria = ""; //glassware
+        this.cristaleria = "";
     }
 
     tamanio(){

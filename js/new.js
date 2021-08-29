@@ -1,6 +1,6 @@
 const ounce = 30; // 1oz = 30ml 
 
-// ------------ CLASES ------------
+// ------------ CLASSES ------------
 
 class User{
     constructor(){
@@ -35,6 +35,7 @@ const recipes = [];
 let btnNewRecipe = document.getElementById("btn-new-recipe")
 btnNewRecipe.addEventListener("click", newRecipe)
 function newRecipe(){
+    // this function pushes a new empty recipe into the users array
     const emptyCocktail = new Cocktail();
     recipes.push(emptyCocktail);
 
@@ -50,10 +51,10 @@ function newRecipe(){
         <div id="card-body" class="d-flex flex-row">
             <div id="recipe-data">
                 <div>
-                    <h3 class="d-inline">Cristaleria recomendada</h3> 
+                    <h3 class="d-inline">Recommended glassware</h3> 
                     <p class="d-inline"> </p>
                 </div>
-                <h3>Ingredientes</h3>
+                <h3>Ingredients</h3>
                 <ul id="listIngredients"></ul>
             </div>
             <div id="recipe-operations">
@@ -68,47 +69,41 @@ function newRecipe(){
     recipe.classList.add("card-recipe");
     recipe.setAttribute("id","recipe");
 
-
-
     gridRecipes.appendChild(recipe);
-
-    // this function pushes a new empty recipe into the users array
 }
 
-
-
 // recetario.html edit recipe name button
-// let btnEditRecipeName = document.getElementById("btn-edit-recipe-name");
-// btnEditRecipeName.addEventListener("click", editRecipeName);
-// let cocktailName = document.getElementById("recipe-name");
-// function editRecipeName(){
-//     let userEntry = "NuevoNombre";
-//     cocktailName.innerHTML= `${userEntry}`;
-//     ;
-// }
+let btnEditRecipeName = document.getElementById("btn-edit-recipe-name");
+btnEditRecipeName.addEventListener("click", editRecipeName);
+let cocktailName = document.getElementById("recipe-name");
+function editRecipeName(){
+    let userEntry = "NuevoNombre";
+    cocktailName.innerHTML= `${userEntry}`;
+    ;
+}
 
 // recetario.html new ingredient
-// let btnNewIngredient = document.getElementById("btn-new-ingredient");
-// btnNewIngredient.addEventListener("click",newIngredient);
-// function newIngredient(){
-//     let listIngredients = document.getElementById("listIngredients");
-//     let listItem = document.createElement("li");
-//     listItem.innerHTML = 
-//         `
-//         <b>Ingrediente:</b> pude agregar un ingrediente
-//         `;
-//     listIngredients.appendChild(listItem);
+let btnNewIngredient = document.getElementById("btn-new-ingredient");
+btnNewIngredient.addEventListener("click",newIngredient);
+function newIngredient(){
+    let listIngredients = document.getElementById("listIngredients");
+    let listItem = document.createElement("li");
+    listItem.innerHTML = 
+        `
+        Pude agregar un ingrediente
+        `;
+    listIngredients.appendChild(listItem);
 
-// }
+}
 
 // recetario.html delete recipe
-// let btnDeleteRecipe = document.getElementById("btn-delete-recipe");
-// btnDeleteRecipe.addEventListener("click",deleteRecipe);
-// function deleteRecipe(){
-//     //va a borrar la card desde donde se llama a este evento
-// }
+let btnDeleteRecipe = document.getElementById("btn-delete-recipe");
+btnDeleteRecipe.addEventListener("click",deleteRecipe);
+function deleteRecipe(){
+    //va a borrar la card desde donde se llama a este evento
+}
 
-// recetario.html delete all
+// recetario.html delete all recipes
 let btnDeleteAll = document.getElementById("btn-delete-all");
 btnDeleteAll.addEventListener("click",deleteAll);
 function deleteAll(){

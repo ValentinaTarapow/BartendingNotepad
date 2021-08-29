@@ -100,7 +100,7 @@ function newIngredient(){
 let btnDeleteRecipe = document.getElementById("btn-delete-recipe");
 btnDeleteRecipe.addEventListener("click",deleteRecipe);
 function deleteRecipe(){
-    //va a borrar la card desde donde se llama a este evento
+    //this function erases the card where this event is called and erases the element from the recipes array
 }
 
 // recetario.html delete all recipes

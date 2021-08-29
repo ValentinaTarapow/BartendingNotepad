@@ -4,11 +4,21 @@ const onza = 30; //en ml
 
 // ------------ CLASES ------------
 
+class User{
+    constructor(){
+        this.userName = userName;
+        this.recipes = [];
+    }
+}
+
+// REVISAR
+let recipes = [];
+
 class Trago{
-    constructor(nombre){
-        this.nombre = nombre ;
+    constructor(){
+        this.nombre = "NuevoTrago" ;
         this.ingredientes = [];
-        this.cristaleria = "";
+        this.cristaleria = ""; //glassware
     }
 
     tamanio(){
@@ -201,6 +211,95 @@ function validarNumero(value, callback){
     }
 }
 
+// EVENTOS
+
+// recetario.html new recipe action
+let btnNewRecipe = document.getElementById("btn-new-recipe")
+btnNewRecipe.addEventListener("click", newRecipe)
+function newRecipe(){
+    alert("ADD RECIPE")
+    const emptyCocktail = new Trago();
+    recipes.push(emptyCocktail);
+
+
+    let index = 1;
+
+    let gridRecipes = document.getElementById("recipes-grid");
+    let recipe = document.createElement("div");
+    recipe.innerHTML = 
+        `
+        <h1>${trago.nombre}(${trago.tamanio()}oz)</h1>
+        <div>
+            <h2 class="d-inline">Cristaleria recomendada: </h2> 
+            <p class="d-inline"> ${trago.cristaleria} </p>
+        </div>
+        `;
+
+    let containerIng = document.createElement("ul");
+    containerIng.innerHTML=
+        `
+        <h2>Ingredientes:</h2>
+        `;
+    for(const element of trago.ingredientes){
+        let listItem = document.createElement("li");
+        listItem.innerHTML = 
+            `
+            <b>Ingrediente ${index}:</b> ${element.mostrar()};
+            `;
+        index++;
+        containerIng.appendChild(listItem)
+    }
+
+    let alertContainer = document.getElementById("alertZone");
+    let alertFinalized = document.createElement("div");
+    alertFinalized.innerHTML= 
+    `
+    <p><strong>🍸¡Terminamos, ${nombreUsuario}!🍸</strong> <br> Puedes ver tu nueva receta ↓</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+
+    recipe.classList.add("card-recipe");
+    recipe.setAttribute("id","receta");
+
+    alertFinalized.classList.add("miAlerta")
+    alertFinalized.classList.add("alert");
+    alertFinalized.classList.add("alert-success");
+    alertFinalized.classList.add("alert-dismissible");
+    alertFinalized.classList.add("fade");
+    alertFinalized.classList.add("show");
+
+    gridRecipes.appendChild(recipe);
+    recipe.appendChild(containerIng);
+
+    // this function pushes a new empty recipe into the users array
+}
+
+// recetario.html delete all recipes
+let btnDeleteAll = document.getElementById("btn-delete-all");
+btnDeleteAll.addEventListener("click", deleteRecipeBook);
+function deleteRecipeBook(){
+    alert("DELETE ALL RECIPES")
+    // this functions clears the array from the user
+}
+
+// recetario.html new ingredient
+let btnNewIngredient = document.getElementById("btn-new-ingredient");
+btnNewIngredient.addEventListener("click",newIngredient);
+function newIngredient(){
+
+}
+
+// Agregar ingrediente aceptar en modal nuevo ingrediente
+function addIngredient(){
+    let listIngredients = document.getElementById("listIngredients");
+    let listItem = document.createElement("li");
+    listItem.innerHTML = 
+        `
+        <b>Ingrediente:</b> pude agregar un ingrediente;
+        `;
+    listIngredients.appendChild(listItem);
+}
+
 
 // ----------EJECUCION----------
 
@@ -208,6 +307,6 @@ function validarNumero(value, callback){
 const tuTrago = new Trago();
 
 // LLAMO A LAS FUNCIONES O METODOS
-ingresarUsuario();
-ingresarTrago(tuTrago);
-imprimirInfo(tuTrago);
+// ingresarUsuario();
+// ingresarTrago(tuTrago);
+// imprimirInfo(tuTrago);

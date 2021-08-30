@@ -89,27 +89,38 @@ function newRecipe(){
         listItem.innerHTML = 
             `
                 <p class="d-inline" >Pude agregar un ingrediente</p>
-                <button class="bg-danger d-inline" id="btn-delete-ingredient" title="Delete Ingredient"><i class="fa fa-times" aria-hidden="true"></i></button>
             `;
-        listIngredients.appendChild(listItem);
+
+        // <button class="bg-danger d-inline" id="btn-delete-ingredient" title="Delete Ingredient"><i class="fa fa-times" aria-hidden="true"></i></button>
 
         // recetario.html delete ingredient
-        let deleteIng = document.getElementById("btn-delete-ingredient");
-        let ingredient = document.getElementById("item-ingredient")
-        deleteIng.addEventListener("click", deleteIngredient);
-        function deleteIngredient(){
-            //this function erases the card where this event is called and erases the element from the recipes array
-            ingredient.remove();
-        }
-    }
+        let btnDeleteIngredient = document.createElement("button");
+        btnDeleteIngredient.setAttribute("id","btn-delete-ingredient");
+        btnDeleteIngredient.setAttribute("title","Delete ingredient");
+        
+        btnDeleteIngredient.classList.add("bg-danger");
+        btnDeleteIngredient.classList.add("d-inline");
 
-    // recetario.html delete recipe
-    let btnDeleteRecipe = document.getElementById("btn-delete-recipe");
-    btnDeleteRecipe.addEventListener("click", deleteRecipe);
-    function deleteRecipe(){
-        //this function erases the card where this event is called and erases the element from the recipes array
-        recipe.remove();
-    }
+        btnDeleteIngredient.innerHTML=
+        `
+            <i class="fa fa-times" aria-hidden="true"></i>
+        `;
+
+        btnDeleteIngredient.addEventListener("click",(e)=>{
+            e.currentTarget.parentNode.parentNode.removeChild(e.currentTarget.parentNode);
+        });
+
+        listItem.appendChild(btnDeleteIngredient);
+        listIngredients.appendChild(listItem);
+
+        // recetario.html delete recipe
+        let btnDeleteRecipe = document.getElementById("btn-delete-recipe");
+        btnDeleteRecipe.addEventListener("click", deleteRecipe);
+        function deleteRecipe(){
+            //this function erases the card where this event is called and erases the element from the recipes array
+            recipe.remove();
+        }
+    }    
 }
 
 
@@ -171,6 +182,4 @@ function refreshRecipes(){
 }
 
 const myUser = new User();
-
-
 

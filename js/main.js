@@ -93,6 +93,7 @@ function newRecipe(){
 
     }
 
+<<<<<<< HEAD
     // recetario.html delete recipe
     let btnDeleteRecipe = document.getElementById("btn-delete-recipe");
     btnDeleteRecipe.addEventListener("click",deleteRecipe,false);
@@ -103,6 +104,21 @@ function newRecipe(){
 }
 
 
+=======
+// recetario.html delete recipe
+let btnDeleteRecipe = document.getElementById("btn-delete-recipe");
+btnDeleteRecipe.addEventListener("click",deleteRecipe,false);
+function deleteRecipe(e){
+    
+    //this function erases the card where this event is called and erases the element from the recipes array
+}
+
+
+
+}
+
+
+>>>>>>> 9dbeab3e62b139b5acb16358c560655615b35f70
 // recetario.html delete all recipes
 let btnDeleteAll = document.getElementById("btn-delete-all");
 btnDeleteAll.addEventListener("click",deleteAll);

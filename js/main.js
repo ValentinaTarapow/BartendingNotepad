@@ -29,7 +29,7 @@ class Ingredient{
     }
 }
 
-// recetario.html new recipe button
+// recetario.html new-recipe button
 let btnNewRecipe = document.getElementById("btn-new-recipe")
 btnNewRecipe.addEventListener("click", newRecipe)
 function newRecipe(){
@@ -57,7 +57,6 @@ function newRecipe(){
             </div>
             <div id="recipe-operations">
                 <button class="btn bg-success" id="btn-new-ingredient" title="Add Ingredient"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                <button class="btn bg-danger" id="btn-delete-recipe" title="Delete Recipe"><i class="fa fa-trash" aria-hidden="true"></i></button>
             </div>
 
         </div>
@@ -69,57 +68,76 @@ function newRecipe(){
 
     gridRecipes.appendChild(recipe);
 
-    // recetario.html edit recipe name button
-    let btnEditRecipeName = document.getElementById("btn-edit-recipe-name");
-    btnEditRecipeName.addEventListener("click", editRecipeName);
-    let cocktailName = document.getElementById("recipe-name");
-    function editRecipeName(){
-        let userEntry = "NuevoNombre";
-        cocktailName.innerHTML= `${userEntry}`;
-        ;
-    }
+    // recetario.html edit-recipe-name button (NO FUNCIONA)
+        let btnEditRecipeName = document.getElementById("btn-edit-recipe-name");
+        let cocktailName = document.getElementById("recipe-name");
+        cocktailName.setAttribute("contenteditable","true")
+        btnEditRecipeName.addEventListener("click", (e)=>{
+            let userEntry = prompt("Please enter the new name"); 
+        });
+    // ------------------------------------------
 
-    // recetario.html new ingredient
+
+    // recetario.html delete-recipe (NO FUNCIONA)
+        let recipeOperations = document.getElementById("recipe-operations")
+
+        let btnDeleteRecipe = document.createElement("btn-delete-recipe");
+
+        btnDeleteRecipe.classList.add("bg-danger");
+        btnDeleteRecipe.classList.add("btn");
+
+        btnDeleteRecipe.setAttribute("title","Delete recipe")
+
+        btnDeleteRecipe.innerHTML=
+        `
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        `;
+
+        btnDeleteRecipe.addEventListener("click",(e)=>{
+        //this function erases the card where this event is called and erases the element from the recipes array
+        alert("Entro al evento de btnDelete");
+        recipe.remove();
+        });
+        recipeOperations.appendChild(btnDeleteRecipe);
+    // ------------------------------------------
+
+
+    // recetario.html new-ingredient
     let btnNewIngredient = document.getElementById("btn-new-ingredient");
     btnNewIngredient.addEventListener("click",newIngredient);
     function newIngredient(){
+
         let listIngredients = document.getElementById("listIngredients");
         let listItem = document.createElement("li");
         listItem.setAttribute("id","item-ingredient");
+        let userEntry = prompt("Please enter ingredient data")
         listItem.innerHTML = 
             `
-                <p class="d-inline" >Pude agregar un ingrediente</p>
+                <p class="d-inline" >${userEntry}</p> ${Math.floor(Math.random() * 30)}
             `;
 
-        // <button class="bg-danger d-inline" id="btn-delete-ingredient" title="Delete Ingredient"><i class="fa fa-times" aria-hidden="true"></i></button>
 
-        // recetario.html delete ingredient
-        let btnDeleteIngredient = document.createElement("button");
-        btnDeleteIngredient.setAttribute("id","btn-delete-ingredient");
-        btnDeleteIngredient.setAttribute("title","Delete ingredient");
-        
-        btnDeleteIngredient.classList.add("bg-danger");
-        btnDeleteIngredient.classList.add("d-inline");
+        // recetario.html delete-ingredient
+            let btnDeleteIngredient = document.createElement("button");
+            btnDeleteIngredient.setAttribute("id","btn-delete-ingredient");
+            btnDeleteIngredient.setAttribute("title","Delete ingredient");
+            
+            btnDeleteIngredient.classList.add("bg-danger");
+            btnDeleteIngredient.classList.add("d-inline");
 
-        btnDeleteIngredient.innerHTML=
-        `
-            <i class="fa fa-times" aria-hidden="true"></i>
-        `;
+            btnDeleteIngredient.innerHTML=
+            `
+                <i class="fa fa-times" aria-hidden="true"></i>
+            `;
 
-        btnDeleteIngredient.addEventListener("click",(e)=>{
-            e.currentTarget.parentNode.parentNode.removeChild(e.currentTarget.parentNode);
-        });
+            btnDeleteIngredient.addEventListener("click",(e)=>{
+                e.currentTarget.parentNode.parentNode.removeChild(e.currentTarget.parentNode);
+            });
 
-        listItem.appendChild(btnDeleteIngredient);
-        listIngredients.appendChild(listItem);
+            listItem.appendChild(btnDeleteIngredient);
+            listIngredients.appendChild(listItem);
+        // ------------------------------------------
 
-        // recetario.html delete recipe
-        let btnDeleteRecipe = document.getElementById("btn-delete-recipe");
-        btnDeleteRecipe.addEventListener("click", deleteRecipe);
-        function deleteRecipe(){
-            //this function erases the card where this event is called and erases the element from the recipes array
-            recipe.remove();
-        }
     }    
 }
 

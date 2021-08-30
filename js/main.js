@@ -131,6 +131,7 @@ function refreshRecipes(){
         `
         <div id="card-title" class="w-100">
             <h2 id="recipe-name" class="d-inline">${element.cocktailName}</h2>
+            <button class="d-inline" id="btn-edit-recipe-name"><i class="fa fa-pencil" aria-hidden="true"></i></button>
         </div>
 
         <div id="card-body" class="d-flex flex-row">
@@ -139,6 +140,14 @@ function refreshRecipes(){
                     <h3 class="d-inline">Recommended glassware</h3> 
                     <p class="d-inline">${element.glassware}</p>
                 </div>
+                <h3>Ingredients</h3>
+                <ul id="listIngredients"></ul>
+            </div>
+            <div id="recipe-operations">
+                <button class="btn bg-success" id="btn-new-ingredient" title="Add Ingredient"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                <button class="btn bg-danger" id="btn-delete-recipe" title="Delete Recipe"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </div>
+
         </div>
         `;
 

@@ -168,8 +168,6 @@ function refreshRecipes(){
     gridRecipes.appendChild(recipe);
 
     }
-
-
 }
 
 const myUser = new User();

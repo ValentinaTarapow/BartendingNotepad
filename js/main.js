@@ -107,6 +107,9 @@ function newRecipe(){
 let btnDeleteAll = document.getElementById("btn-delete-all");
 btnDeleteAll.addEventListener("click",deleteAll);
 function deleteAll(){
+
+    let gridRecipes = document.getElementById("recipes-grid");
+
     gridRecipes.innerHTML = "";
 
     while(myUser.recipes.length > 0){

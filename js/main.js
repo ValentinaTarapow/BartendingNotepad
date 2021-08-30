@@ -78,7 +78,7 @@ function newRecipe(){
     // ------------------------------------------
 
 
-    // recetario.html delete-recipe (NO FUNCIONA)
+    // recetario.html delete-recipe (FUNCIONA A MEDIAS)
         let recipeOperations = document.getElementById("recipe-operations")
 
         let btnDeleteRecipe = document.createElement("btn-delete-recipe");

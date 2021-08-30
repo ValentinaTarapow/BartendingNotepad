@@ -127,7 +127,7 @@ function deleteAll(){
     }
 }
 
-// recetario.html clears recipes-grid and show the recipes array
+// recetario.html clears recipes-grid and show the recipes array (para el desfio complementario)
 let btnRefresh = document.getElementById("btn-refresh");
 btnRefresh.addEventListener("click",refreshRecipes);
 function refreshRecipes(){

@@ -85,20 +85,34 @@ function newRecipe(){
     function newIngredient(){
         let listIngredients = document.getElementById("listIngredients");
         let listItem = document.createElement("li");
+        listItem.setAttribute("id","item-ingredient");
         listItem.innerHTML = 
             `
-            Pude agregar un ingrediente
+            <div id="deleteIngredient">
+                <p>Pude agregar un ingrediente</p>
+                <div id="recipe-operations">
+                    <button class="btn bg-danger" id="btn-delete-ingredient" title="Delete Recipe"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                </div>
+            </div>
             `;
         listIngredients.appendChild(listItem);
 
+        // recetario.html delete ingredient
+        let deleteIng = document.getElementById("btn-delete-ingredient");
+        let ingredient = document.getElementById("item-ingredient")
+        deleteIng.addEventListener("click", deleteIngredient);
+        function deleteIngredient(){
+            //this function erases the card where this event is called and erases the element from the recipes array
+            ingredient.remove();
+        }
     }
 
     // recetario.html delete recipe
     let btnDeleteRecipe = document.getElementById("btn-delete-recipe");
-    btnDeleteRecipe.addEventListener("click",deleteRecipe,false);
-    function deleteRecipe(e){
-        
+    btnDeleteRecipe.addEventListener("click", deleteRecipe);
+    function deleteRecipe(){
         //this function erases the card where this event is called and erases the element from the recipes array
+        recipe.remove();
     }
 }
 
@@ -163,3 +177,6 @@ function refreshRecipes(){
 }
 
 const myUser = new User();
+
+
+

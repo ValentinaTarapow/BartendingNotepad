@@ -88,12 +88,8 @@ function newRecipe(){
         listItem.setAttribute("id","item-ingredient");
         listItem.innerHTML = 
             `
-            <div id="deleteIngredient">
-                <p>Pude agregar un ingrediente</p>
-                <div id="recipe-operations">
-                    <button class="btn bg-danger" id="btn-delete-ingredient" title="Delete Recipe"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                </div>
-            </div>
+                <p class="d-inline" >Pude agregar un ingrediente</p>
+                <button class="btn bg-danger d-inline" id="btn-delete-ingredient" title="Delete Ingredient"><i class="fa fa-times" aria-hidden="true"></i></button>
             `;
         listIngredients.appendChild(listItem);
 

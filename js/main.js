@@ -44,9 +44,9 @@ function newRecipe(){
     let recipe = document.createElement("div");
     recipe.innerHTML = 
         `
-        <div id="card-title-${count}" class="recipe-title w-100" data-filter-item data-filter-name="${emptyCocktail.cocktailName}">
-            <h2 id="recipe-name-${count}" class="d-inline">${emptyCocktail.cocktailName}</h2>
-            <button class="d-inline" id="btn-edit-recipe-name-${count}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+        <div id="card-title-${count}" class="recipe-title w-100 d-flex flex-row justify-content-between" data-filter-item data-filter-name="${emptyCocktail.cocktailName}">
+            <h2 id="recipe-name-${count}" class="d-inline w-100">${emptyCocktail.cocktailName}</h2>
+            <button class="d-inline btn btn-secondary" id="btn-edit-recipe-name-${count}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
         </div>
 
         <div id="card-body" class="d-flex flex-row">

@@ -14,7 +14,7 @@ class Cocktail{
         this.cocktailName = "NewCocktail" ;
         this.ingredients = [];
         this.glassware = "";
-        // aca le voy a agregar un id como en un link que me habias pasado
+        // aca le voy a agregar un id con incrementador como en un link que me habias pasado
     }
 }
 
@@ -44,7 +44,7 @@ function newRecipe(){
     let recipe = document.createElement("div");
     recipe.innerHTML = 
         `
-        <div id="card-title-${count}" class="recipe-title w-100">
+        <div id="card-title-${count}" class="recipe-title w-100" data-filter-item data-filter-name="${emptyCocktail.cocktailName}">
             <h2 id="recipe-name-${count}" class="d-inline">${emptyCocktail.cocktailName}</h2>
             <button class="d-inline" id="btn-edit-recipe-name-${count}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
         </div>
@@ -195,7 +195,6 @@ function deleteAll(){
     gridRecipes.innerHTML = "";
     myUser.recipes = []
 }
-
 
 //  edit-user-name button
     //user creation

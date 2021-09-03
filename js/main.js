@@ -196,7 +196,7 @@ function deleteAll(){
     myUser.recipes = []
 }
 
-//  edit-user-name button
+//  edit-user-name button  / storage
     //user creation
     const myUser = new User();
 

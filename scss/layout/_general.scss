@@ -52,11 +52,12 @@ body{
         font-size: 1rem;
         border: black 3px solid;
 
-        #card-title{
+        .recipe-title{
             background-color: $color2;
             border-bottom: solid black;
             text-align: center;
         }
+    
         h2{
             font-size: 3rem;
             color: black;
@@ -74,11 +75,11 @@ body{
             background-color: white;
             color: black;
 
-            #recipe-data{
+            .recipe-data{
                 width: 100%;
             }
 
-            #recipe-operations{
+            .recipe-operations{
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;

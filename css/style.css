@@ -39,7 +39,7 @@ body {
     background-color: white;
     font-size: 1rem;
     border: black 3px solid; }
-    #recipes-grid .card-recipe #card-title {
+    #recipes-grid .card-recipe .recipe-title {
       background-color: #F23545;
       border-bottom: solid black;
       text-align: center; }
@@ -56,14 +56,14 @@ body {
       padding: 5px;
       background-color: white;
       color: black; }
-      #recipes-grid .card-recipe #card-body #recipe-data {
+      #recipes-grid .card-recipe #card-body .recipe-data {
         width: 100%; }
-      #recipes-grid .card-recipe #card-body #recipe-operations {
+      #recipes-grid .card-recipe #card-body .recipe-operations {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-content: flex-end; }
-        #recipes-grid .card-recipe #card-body #recipe-operations button {
+        #recipes-grid .card-recipe #card-body .recipe-operations button {
           width: auto;
           height: auto;
           text-align: center;

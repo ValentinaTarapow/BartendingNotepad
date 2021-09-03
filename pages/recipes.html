@@ -46,7 +46,15 @@
                         </li>
 
                         <li class="nav-item m-auto">
-                            <button class="p-1"><i class="fa fa-user" aria-hidden="true"></i></button>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </button>
+                                <ul class="dropdown-menu text-align-center text-center d-row" aria-labelledby="dropdownMenuButton1">
+                                    <li id="greeting-user"></li>
+                                    <li><button id="edit-user-name" class="btn"><i class="fa fa-pencil" aria-hidden="true">Edit name</i></button></li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -63,8 +71,6 @@
                         <button><i class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
                     <button class="btn bg-success p-3" id="btn-new-recipe"><i class="fa fa-plus" aria-hidden="true"> New recipe</i></button>
-                    <button class="btn bg-primary mx-2 p-3"><i class="fa fa-refresh" aria-hidden="true" id="btn-refresh">Refresh</i></button>
-
                 </div>
                 <div class="dangerous">
                     <button class="btn bg-danger p-3" id="btn-delete-all"><i class="fa fa-trash" aria-hidden="true"> Delete all</i></button>
@@ -91,8 +97,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
         integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous">
     </script>
+
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
     <!-- JAVASCRIPT -->
     <script src="../js/main.js"></script>
+
 
 </body>
 

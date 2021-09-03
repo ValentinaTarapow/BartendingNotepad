@@ -14,6 +14,7 @@ class Cocktail{
         this.cocktailName = "NewCocktail" ;
         this.ingredients = [];
         this.glassware = "";
+        // aca le voy a agregar un id como en un link que me habias pasado
     }
 }
 
@@ -101,8 +102,16 @@ function newRecipe(){
 
         btnDeleteRecipe.addEventListener("click",(e)=>{
         //this function erases the card where this event is called and erases the element from the recipes array
-        // alert("Entro al evento de btnDelete");
-        recipe.remove();
+
+
+        // no se me ocurre como poder compararlo por el tema de que lo llamo desde un evento
+
+        // for(let i = myUser.recipes.length - 1; i >= 0; i--) {
+        //     if(myUser.recipes[i] ===  ) {
+        //         myUser.recipes.splice(i, 1);
+        //     }
+        // }
+            recipe.remove();
         });
         recipeOperations.appendChild(btnDeleteRecipe);
     // ------------------------------------------
@@ -181,62 +190,64 @@ let btnDeleteAll = document.getElementById("btn-delete-all");
 btnDeleteAll.addEventListener("click",deleteAll);
 
 function deleteAll(){
-
     let gridRecipes = document.getElementById("recipes-grid");
 
     gridRecipes.innerHTML = "";
-
     myUser.recipes = []
-
 }
 
 
 //  edit-user-name button
+    //user creation
+    const myUser = new User();
 
-//Creo mi usuario
-const myUser = new User();
+    let storagedUser;
+    let greetingUserSection = document.getElementById("greeting-user");
 
-let storagedUser;
-let greetingUserSection = document.getElementById("greeting-user");
-let username;
+    let editName = document.getElementById("edit-user-name");
+    editName.addEventListener("click", editUserName);
 
-let editName = document.getElementById("edit-user-name");
-editName.addEventListener("click", editUserName);
+    function editUserName(){
+        let userEntry;
 
-function editUserName(){
+        do{
+            userEntry = prompt("Enter your user name");
+        }while(userEntry=="")
 
-    let userEntry = prompt("Enter your user name");
-    myUser.userName = userEntry;
+        myUser.userName = userEntry;
 
-    localStorage.setItem('user', JSON.stringify(myUser));
+        localStorage.setItem('user', JSON.stringify(myUser));
 
-    storagedUser = localStorage.getItem("user");
+        storagedUser = localStorage.getItem("user");
 
 
-    if ( (userEntry== "") || (userEntry == null)) {
-        greetingUserSection.innerHTML= "";
-    }
-    else{
-        greetingUserSection.innerHTML=
-        `
-            Welcome, <span class="text-danger"> ${userEntry}</span>!
-        `;
-    }
-
-}
-
-$(document).ready(function(){   
-
-    storagedUser = JSON.parse(localStorage.getItem("user"));
-
-    if ( (storagedUser.userName == null) || (storagedUser.userName == "") ) {
-        greetingUserSection.innerHTML= "";
-    }
-    else{
+        if ( (userEntry== "") || (userEntry == null)) {
+            greetingUserSection.innerHTML= "";
+        }
+        else{
             greetingUserSection.innerHTML=
-    `
-        Welcome back, <span class="text-danger"> ${storagedUser.userName}</span>!
-    `;
+            `
+                Welcome, <span class="text-danger"> ${userEntry}</span>!
+            `;
+        }
+
     }
-});
+
+    $(document).ready(function(){   
+
+        storagedUser = JSON.parse(localStorage.getItem("user"));
+    
+        myUser.userName = storagedUser.userName;
+        myUser.recipes = storagedUser.recipes;
+
+        if ( (storagedUser.userName == null) || (storagedUser.userName == "") ) {
+            greetingUserSection.innerHTML= "";
+        }
+        else{
+                greetingUserSection.innerHTML=
+        `
+            Welcome back, <span class="text-danger"> ${storagedUser.userName}</span>!
+        `;
+        }
+    });
 

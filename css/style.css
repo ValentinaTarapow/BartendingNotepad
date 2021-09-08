@@ -4,7 +4,7 @@
   scroll-behavior: smooth; }
 
 body {
-  background-color: #F2F2F2;
+  background-color: #676465;
   color: #0D0D0D;
   font-family: 'Rajdhani', sans-serif; }
 
@@ -24,8 +24,10 @@ body {
     background-color: #F23545;
     text-decoration: underline; }
 
-#recipes-page button {
-  border: 1px solid black; }
+#recipes-main button {
+  border: solid #0D0D0D 2px;
+  font-family: 'Rajdhani', sans-serif;
+  color: black; }
 
 #recipes-grid {
   margin: 20px;
@@ -75,37 +77,10 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center; }
-  #alertZone .miAlerta {
-    width: 30%; }
-    #alertZone .miAlerta p {
-      text-align: center;
-      margin: 0; }
-    #alertZone .miAlerta button {
-      border: none; }
-
-.btn-start {
-  min-width: 130px;
-  height: 40px;
-  padding: 5px 10px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  outline: none;
-  border-radius: 5px;
-  border: none;
-  background: #ef233c;
-  box-shadow: 0 5px #d90429; }
-  .btn-start a {
-    color: black;
-    text-decoration: none; }
-  .btn-start:hover {
-    box-shadow: 0 3px #d90429;
-    top: 1px; }
-  .btn-start:active {
-    box-shadow: 0 0 #d90429;
-    top: 5px; }
+  #alertZone #alert-success {
+    display: none; }
+  #alertZone #btn-close-alert {
+    border: none; }
 
 #brand {
   color: #F23545;

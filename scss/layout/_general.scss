@@ -5,7 +5,7 @@
 }
 
 body{
-    background-color: $color4;
+    background-color: lighten($color3, 15%);
     color: $color1;
     font-family: 'Rajdhani', sans-serif;
 }
@@ -29,9 +29,11 @@ body{
     }
 }
 
-#recipes-page{
+#recipes-main{
     button{
-        border: 1px solid black;
+        border: $borde-basic;
+        font-family: 'Rajdhani', sans-serif;
+        color: black;
     }
 }  
 
@@ -97,50 +99,18 @@ body{
 }
 
 #alertZone{
+
+    #alert-success{
+        display: none;
+    }
+
+    #btn-close-alert{
+        border: none ;
+    }
+
     margin-top: 10px;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    .miAlerta{
-        width: 30%;
-        p{
-            text-align: center;
-            margin: 0;
-        }
-        button{
-                    border: none;
-        }
-
-    }
-}
-
-.btn-start {
-    min-width: 130px;
-    height: 40px;
-    padding: 5px 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-    outline: none;
-    border-radius: 5px;
-    border: none;
-    background: #ef233c;
-    box-shadow: 0 5px #d90429;
-
-    a{
-        color: black;
-        text-decoration: none;
-    }
-
-        &:hover {
-            box-shadow: 0 3px #d90429;
-            top: 1px;
-        }
-        &:active {
-            box-shadow: 0 0 #d90429;
-            top: 5px;
-        }
 }

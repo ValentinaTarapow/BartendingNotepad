@@ -68,8 +68,8 @@ $("#btn-new-recipe").click(function(){
     gridRecipes.appendChild(recipe);
 
     // recetario.html edit-recipe-name button
-    $(`#btn-edit-recipe-name-${count}`).click(function(){
-        let cocktailName = document.getElementById(`recipe-name-${count}`);
+    let cocktailName = document.getElementById(`recipe-name-${count}`);
+    $(`#btn-edit-recipe-name-${count}`).click(function(e){
         let userEntry = prompt("Please enter the new name");
         if((userEntry == null) || (userEntry == "") ){
             cocktailName.innerText = cocktailName.innerText;
@@ -80,23 +80,22 @@ $("#btn-new-recipe").click(function(){
         }
 
     });
-
     // ------------------------------------------
 
 
     // recetario.html delete-recipe
-        $(`#recipe-operations-${count}`).append
-            (`
-                <button id="btn-delete-recipe" class="btn bg-danger w-auto h-auto text-center" title="Delete recipe"> 
+        $(`#recipe-operations-${count}`).append(`
+                <button id="btn-delete-recipe-${count}" class="btn bg-danger w-auto h-auto text-center" title="Delete recipe"> 
                     <i class="fa fa-trash" aria-hidden="true"></i>
                 </button> 
             `);
 
-        $("#btn-delete-recipe").click(function(){
+        $(`#btn-delete-recipe-${count}`).click(function(e){
         //this function erases the card where this event is called and erases the element from the recipes array
         // no se me ocurre como poder compararlo por el tema de que lo llamo desde un evento
+            e.currentTarget.parentNode.parentNode.parentNode.remove();                
 
-            recipe.remove();
+            // $(`#recipe-${count}`).remove();
         });
     // ------------------------------------------
 

@@ -49,9 +49,10 @@ $("#btn-new-recipe").click(function(){
         <div id="card-body" class="d-flex flex-row">
             <div id="recipe-data-${count}" class="w-100">
                 <div>
+                    <h3>Ingredients</h3>
+                    <ul id="listIngredients-${count}" class="listIngredients w-75 container"></ul>
                 </div>
-                <h3>Ingredients</h3>
-                <ul id="listIngredients-${count}" class="listIngredients w-75"></ul>
+                
             </div>
             <div id="recipe-operations-${count}" class="recipe-operations">
                 <button class="btn bg-success" id="btn-new-ingredient-${count}" title="Add Ingredient"><i class="fa fa-plus" aria-hidden="true"></i></button>
@@ -140,7 +141,9 @@ $("#btn-new-recipe").click(function(){
 
             listItem.classList.add("d-flex");
             listItem.classList.add("flex-row");
-            listItem.classList.add("justify-content-between")
+            listItem.classList.add("justify-content-start");
+            listItem.classList.add("list-ingr-item")
+
 
 
 
@@ -148,10 +151,11 @@ $("#btn-new-recipe").click(function(){
                 let btnDeleteIngredient = document.createElement("button");
                 btnDeleteIngredient.setAttribute("id",`btn-delete-ingredient-${id}`);
                 btnDeleteIngredient.setAttribute("title","Delete ingredient");
-                btnDeleteIngredient.classList.add("h-50")
                 
                 btnDeleteIngredient.classList.add("bg-danger");
                 btnDeleteIngredient.classList.add("d-inline");
+                btnDeleteIngredient.classList.add("me-1")
+                btnDeleteIngredient.classList.add("btn-delete-ingredient")
 
                 btnDeleteIngredient.innerHTML=
                 `
@@ -165,7 +169,7 @@ $("#btn-new-recipe").click(function(){
                     
                 });
                 
-                listItem.appendChild(btnDeleteIngredient);
+                listItem.prepend(btnDeleteIngredient);
                 listIngredients.appendChild(listItem);
             // ------------------------------------------
 

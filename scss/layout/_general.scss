@@ -8,6 +8,15 @@ body{
     background-color: lighten($color3, 15%);
     color: $color1;
     font-family: 'Rajdhani', sans-serif;
+
+    height:305px;
+    background-image:
+    -webkit-linear-gradient(90deg, transparent, transparent 24px, #f0c9ca 24px, #f0c9ca 25px, transparent 25px, transparent 27px, #f0c9ca 27px, #f0c9ca 28px, transparent 28px),
+    -webkit-linear-gradient(#fff, #fff 17px, #e3ebf3 17px, #e3ebf3 18px);
+    background-size: 36px 18px, 36px 18px;
+    background-repeat: repeat-y, repeat;
+    box-shadow:0 0 1px rgba(0, 0, 0, 0.3);
+
 }
 
 .section-divided{
@@ -30,6 +39,8 @@ body{
 }
 
 #recipes-main{
+
+    
     button{
         border: $borde-basic;
         font-family: 'Rajdhani', sans-serif;
@@ -55,6 +66,7 @@ body{
         border: black 3px solid;
 
         .recipe-title{
+            font-family: 'Architects Daughter', cursive;
             background-color: $color2;
             border-bottom: solid black;
             text-align: center;
@@ -63,16 +75,21 @@ body{
         h2{
             font-size: 3rem;
             color: black;
-            text-decoration: underline;
+            // text-decoration: underline;
             text-align: center;
+            padding-bottom: 0;
         }
         h3{
             font-size: 1.5rem;
             color: $color2;
-            text-decoration: underline;
+            // text-decoration: underline;
+            font-family: 'Architects Daughter', cursive;
+
         }
 
         #card-body{
+            font-family: 'Rajdhani', sans-serif;
+
             padding: 5px;
             background-color: white;
             color: black;
@@ -113,4 +130,12 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.btn-delete-ingredient{
+    height: fit-content;
+}
+
+.list-ingr-item{
+    word-wrap:break-word;
 }

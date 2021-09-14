@@ -6,7 +6,12 @@
 body {
   background-color: #676465;
   color: #0D0D0D;
-  font-family: 'Rajdhani', sans-serif; }
+  font-family: 'Rajdhani', sans-serif;
+  height: 305px;
+  background-image: -webkit-linear-gradient(90deg, transparent, transparent 24px, #f0c9ca 24px, #f0c9ca 25px, transparent 25px, transparent 27px, #f0c9ca 27px, #f0c9ca 28px, transparent 28px), -webkit-linear-gradient(#fff, #fff 17px, #e3ebf3 17px, #e3ebf3 18px);
+  background-size: 36px 18px, 36px 18px;
+  background-repeat: repeat-y, repeat;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3); }
 
 .section-divided {
   width: 50%;
@@ -42,19 +47,21 @@ body {
     font-size: 1rem;
     border: black 3px solid; }
     #recipes-grid .card-recipe .recipe-title {
+      font-family: 'Architects Daughter', cursive;
       background-color: #F23545;
       border-bottom: solid black;
       text-align: center; }
     #recipes-grid .card-recipe h2 {
       font-size: 3rem;
       color: black;
-      text-decoration: underline;
-      text-align: center; }
+      text-align: center;
+      padding-bottom: 0; }
     #recipes-grid .card-recipe h3 {
       font-size: 1.5rem;
       color: #F23545;
-      text-decoration: underline; }
+      font-family: 'Architects Daughter', cursive; }
     #recipes-grid .card-recipe #card-body {
+      font-family: 'Rajdhani', sans-serif;
       padding: 5px;
       background-color: white;
       color: black; }
@@ -82,17 +89,22 @@ body {
   #alertZone #btn-close-alert {
     border: none; }
 
+.btn-delete-ingredient {
+  height: fit-content; }
+
+.list-ingr-item {
+  word-wrap: break-word; }
+
 #brand {
   color: #F23545;
-  font-family: 'Major Mono Display', monospace;
+  font-family: 'Architects Daughter', cursive;
   font-weight: bold;
   font-size: 2.2rem; }
 
 nav {
   background-color: #0D0D0D;
   font-family: 'Rajdhani', sans-serif;
-  font-weight: bold;
-  text-transform: uppercase; }
+  font-weight: bold; }
   nav li .nav-link {
     padding-bottom: 0px;
     margin-bottom: 8px; }

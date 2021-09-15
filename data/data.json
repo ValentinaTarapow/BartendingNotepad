@@ -1,0 +1,11 @@
+{
+    "ClassicRecipe1":{
+    "name":"Caipiroska",
+    "ingredients":["Vodka", "Lime", "Sugar"]
+    },
+
+    "ClassicRecipe2":{
+        "name":"Cuba Libre",
+        "ingredients":["Rum", "Lemon", "Cola"]
+        }
+}

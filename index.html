@@ -8,11 +8,8 @@
 
 
     <link rel="shortcut icon" href="../media/images/icon.png" type="image/x-icon">
-    <!-- FONTS -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet"> -->
 
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
@@ -64,12 +61,23 @@
         </nav>
 
         <div id="modal-info" class="pop-up">
-            <div id="modal-info-card" class="pop-up-wrap w-50 section-divided">
+            <div id="modal-info-card" class="pop-modal pop-up-wrap w-50 section-divided">
                 <h3 class="m-2">¿What is "Bartending Notepad"?</h3>
-                <p>As bartenders we know that sometimes the process of creating new cocktails can be a little bit tedious, even worse at the moment of remembering them.</p>
+                <p>As bartenders we know that sometimes the process of creating new cocktails can be a little bit tedious, it gets even worse at the moment of remembering them.</p>
                 <p>That is why we created Bartending Notepad as a place where we facilitate the authorship of drinks...you can also use it as a memory helper, we will not tell anyone about it.</p>
                 <p>You will be able to select the type of cocktail, its ingredients, measurements and name your recipes so that you can save them and find everything at the same place.</p>     
                 <button id="btn-close-info" class="btn btn-close-white"><i class="fa fa-close" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <div id="modal-user" class="pop-up">
+            <div id="modal-user-card" class="pop-modal pop-up-wrap w-25">
+                <h3 class="m-2">Edit user name</h3>
+                <input type="text" name="userName" id="input-user" class="w-75 m-2" placeholder="Insert user name">
+                <div class="d-flex flex-row justify-content-around">
+                    <button type="button" class="btn bg-danger p-3 m-2" id="btn-cancel-user"> Cancel </button>
+                    <button class="btn bg-success p-3 m-2" id="btn-save-user"> Save </button>
+                </div>
             </div>
         </div>
     </header>
@@ -116,18 +124,6 @@
                     </div>
                 </div>
             </div>
-    <!--
-            <div id="modal-user" class="pop-up">
-                <div class="pop-up-wrap w-25">
-                    <h3 class="m-2">User</h3>
-                    <input type="text" id="chauchis" class="w-75 m-2" placeholder="Insert user name">
-                    <div class="d-flex flex-row justify-content-around">
-                        <button type="button" class="btn bg-danger p-3 m-2" id="btn-cancel-user"> Cancel </button>
-                        <button class="btn bg-success p-3 m-2" id="btn-save-user"> Save </button>
-                    </div>
-                </div>
-            </div> -->
-
 
             <div id="alertZone">
                 <div class="alert alert-success alert-dismissible" id="alert-success">

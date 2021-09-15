@@ -111,11 +111,11 @@ body {
 .show {
   visibility: visible; }
 
-#modal-info-card {
+.pop-modal {
   border: solid black;
   background-color: #0D0D0D;
   color: white; }
-  #modal-info-card h3 {
+  .pop-modal h3 {
     color: #F23545; }
 
 #btn-info {

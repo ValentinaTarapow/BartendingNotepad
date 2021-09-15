@@ -1,5 +1,6 @@
 const ounce = 30; // 1oz = 30ml 
 let count = -1;
+const URLJSON = "../data/data.json";
 // ------------ CLASSES ------------
 
 class User{
@@ -29,6 +30,9 @@ class Ingredient{
         return( this.ingredientName + " (" + this.alcoholContent +"% Alc/Vol)" + " - " + this.ouncesAmount + "oz" );
     }
 }
+
+
+
 
 
 $("#btn-info").click(function(){
@@ -78,7 +82,7 @@ $("#btn-new-recipe").click(function(){
 
     gridRecipes.appendChild(recipe);
 
-    // recetario.html edit-recipe-name button
+    // edit-recipe-name button
     let cocktailName = document.getElementById(`recipe-name-${count}`);
     $(`#btn-edit-recipe-name-${count}`).click(function(e){
         let userEntry = prompt("Please enter the new name");
@@ -94,7 +98,7 @@ $("#btn-new-recipe").click(function(){
     // ------------------------------------------
 
 
-    // recetario.html delete-recipe
+    // delete-recipe
         $(`#recipe-operations-${count}`).append(`
                 <button id="btn-delete-recipe-${count}" class="btn bg-danger w-auto h-auto text-center" title="Delete recipe"> 
                     <i class="fa fa-trash" aria-hidden="true"></i>
@@ -103,15 +107,13 @@ $("#btn-new-recipe").click(function(){
 
         $(`#btn-delete-recipe-${count}`).click(function(e){
         //this function erases the card where this event is called and erases the element from the recipes array
-        // no se me ocurre como poder compararlo por el tema de que lo llamo desde un evento
+        // para sacarlo del array no se me ocurre como poder compararlo por el tema de que lo llamo desde un evento, 
             e.currentTarget.parentNode.parentNode.parentNode.remove();                
-
-            // $(`#recipe-${count}`).remove();
         });
     // ------------------------------------------
 
 
-    // recetario.html new-ingredient
+    // new-ingredient
     let btnNewIngredient = document.getElementById(`btn-new-ingredient-${count}`);
     btnNewIngredient.addEventListener("click",() => {           
         newIngredient(btnNewIngredient.id.slice(-1))
@@ -157,7 +159,7 @@ $("#btn-new-recipe").click(function(){
 
 
 
-            // recetario.html delete-ingredient
+            // delete-ingredient
                 let btnDeleteIngredient = document.createElement("button");
                 btnDeleteIngredient.setAttribute("id",`btn-delete-ingredient-${id}`);
                 btnDeleteIngredient.setAttribute("title","Delete ingredient");
@@ -188,11 +190,14 @@ $("#btn-new-recipe").click(function(){
     // ------------------------------------------
 });
 
-// recetario.html delete all recipes
+// delete all recipes
 $("#btn-delete-all").click(function(){
     let gridRecipes = document.getElementById("recipes-grid");
     gridRecipes.innerHTML = "";
-    myUser.recipes = []
+
+    while(myUser.recipes.length > 0){
+        myUser.recipes.pop();
+    }
 });
 
 //  edit-user-name button  / storage
@@ -202,34 +207,50 @@ $("#btn-delete-all").click(function(){
     let storagedUser;
     let greetingUserSection = document.getElementById("greeting-user");
 
-
     $("#edit-user-name").click(function(){
-        let userEntry;
+        $("#modal-user").addClass("show");
 
-        do{
-            userEntry = prompt("Enter your user name");
-        }while(userEntry=="")
+        $("#input-user").on("click",function(){
+            this.value='';
+        });
 
-        myUser.userName = userEntry;
+        $("#btn-save-user").click(function(){
+        
+            let userEntry;
 
-        localStorage.setItem('user', JSON.stringify(myUser));
+            userEntry = $("#input-user").value;
+            userEntry = document.querySelector("input[name='userName']").value;
+            myUser.userName = userEntry;
 
-        storagedUser = localStorage.getItem("user");
+            localStorage.setItem('user', JSON.stringify(myUser));
+            storagedUser = localStorage.getItem("user");
 
+            if ( (userEntry== "") || (userEntry == null)) {
+                greetingUserSection.innerHTML= "";
+            }
+            else{
+                greetingUserSection.innerHTML=
+                `
+                    Welcome, <span class="text-danger"> ${userEntry}</span>!
+                `;
+            }
 
-        if ( (userEntry== "") || (userEntry == null)) {
-            greetingUserSection.innerHTML= "";
-        }
-        else{
-            greetingUserSection.innerHTML=
-            `
-                Welcome, <span class="text-danger"> ${userEntry}</span>!
-            `;
-        }
+            $("#modal-user").removeClass("show");
+        });
+
+        $("#btn-cancel-user").click(function(){
+            $("#modal-user").removeClass("show");
+        });
     });
 
     $(document).ready(function(){   
 
+        // AJAX
+        $.getJSON(URLJSON, function (ClassicRecipes) {
+            console.log(ClassicRecipes);
+        });
+
+        // STORAGE
         storagedUser = JSON.parse(localStorage.getItem("user"));
     
         myUser.userName = storagedUser.userName;
@@ -244,4 +265,5 @@ $("#btn-delete-all").click(function(){
             Welcome back, <span class="text-danger"> ${storagedUser.userName}</span>!
         `;
         }
+
     });

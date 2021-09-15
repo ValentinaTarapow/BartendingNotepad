@@ -30,6 +30,16 @@ class Ingredient{
     }
 }
 
+
+$("#btn-info").click(function(){
+    $("#modal-info").addClass("show");
+
+    $("#btn-close-info").click(function(){
+        $("#modal-info").removeClass("show");
+    });
+
+});
+
 $("#btn-new-recipe").click(function(){
     // this function pushes a new empty recipe into the users array and creates a card
     count++

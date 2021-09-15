@@ -137,5 +137,46 @@ body{
 }
 
 .list-ingr-item{
-    word-wrap:break-word;
+    word-wrap: break-word;
+}
+
+.pop-up {
+    background-color: rgba(48, 48, 48, 0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+// .pop-up-wrap{
+//     // border: solid black;
+//     // background-color: $color1;
+//     // color: white;
+//     // width: 40%;
+// }
+
+.show {
+    visibility: visible;
+}
+
+
+#modal-info-card{
+    border: solid black;
+    background-color: $color1;
+    color: white;
+
+    h3{
+        // font-family: 'Architects Daughter', cursive;
+        color: $color2;
+    }
+}
+
+#btn-info{
+    cursor: pointer;
 }

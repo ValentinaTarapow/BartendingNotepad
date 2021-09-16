@@ -56,7 +56,7 @@ $("#btn-new-recipe").click(function(){
     recipe.innerHTML = 
         `
         <div id="card-title-${count}" class="recipe-title w-100 d-flex flex-row justify-content-between" data-filter-item data-filter-name="${emptyCocktail.cocktailName}">
-            <h2 id="recipe-name-${count}" class="d-inline w-100">${emptyCocktail.cocktailName}</h2>
+            <h2 id="recipe-name-${count}" class="recipe-name d-inline w-100">${emptyCocktail.cocktailName}</h2>
             <button class="d-inline btn btn-secondary border-top-0 border-bottom-0 border-end-0 rounded-0" id="btn-edit-recipe-name-${count}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
         </div>
 
@@ -83,18 +83,38 @@ $("#btn-new-recipe").click(function(){
     gridRecipes.appendChild(recipe);
 
     // edit-recipe-name button
-    let cocktailName = document.getElementById(`recipe-name-${count}`);
+    // let cocktailName = document.getElementById(`recipe-name-${count}`);
     $(`#btn-edit-recipe-name-${count}`).click(function(e){
-        let userEntry = prompt("Please enter the new name");
-        if((userEntry == null) || (userEntry == "") ){
-            cocktailName.innerText = cocktailName.innerText;
-        }
-        else{
-            cocktailName.innerText = userEntry;
-            myUser.recipes[count].cocktailName = userEntry;
-        }
+
+        $("#modal-recipe-name").addClass("show");
+
+        $("#btn-cancel-recipe").click(function(){
+            $("#modal-recipe-name").removeClass("show");
+        });
+
+        $("#btn-save-recipe").click(function(){
+
+            let userEntry = document.querySelector("input[name='recipeName']").value;
+            let targetCard = e.currentTarget.parentNode.id; 
+            console.log(targetCard);
+
+            $(`${targetCard} > .recipe-name`).innerText = `${userEntry}`;
+
+            // if((userEntry == null) || (userEntry == "") ){
+            //     cocktailName.innerText = cocktailName.innerText;
+            // }
+            // else{
+
+            //     cocktailName.innerText = userEntry;
+            //     myUser.recipes[count].cocktailName = userEntry;
+            // }
+
+            $("#modal-recipe-name").removeClass("show");
+        });
+
 
     });
+
     // ------------------------------------------
 
 
@@ -108,7 +128,7 @@ $("#btn-new-recipe").click(function(){
         $(`#btn-delete-recipe-${count}`).click(function(e){
         //this function erases the card where this event is called and erases the element from the recipes array
         // para sacarlo del array no se me ocurre como poder compararlo por el tema de que lo llamo desde un evento, 
-            e.currentTarget.parentNode.parentNode.parentNode.remove();                
+            e.currentTarget.parentNode.parentNode.parentNode.remove();  
         });
     // ------------------------------------------
 

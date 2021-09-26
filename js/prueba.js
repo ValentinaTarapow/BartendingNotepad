@@ -108,21 +108,21 @@ $("#btn-new-recipe").click(function(){
 
         $("#btn-save-recipe").click(function(){
 
-            // let userEntry = input.value;
-            // let targetCard = e.currentTarget.parentNode.id; 
-            // console.log(targetCard);
+            let userEntry = input.value;
+            let targetCard = e.currentTarget.parentNode.id; 
+            console.log(targetCard);
 
-            // $(`${targetCard} > .recipe-name`).innerText = `${userEntry}`;
+            $(`${targetCard} > .recipe-name`).innerText = `${userEntry}`;
 
-            // if((userEntry == null) || (userEntry == "") ){
-            //     cocktailName.innerText = cocktailName.innerText;
-            // }
-            // else{
+            if((userEntry == null) || (userEntry == "") ){
+                cocktailName.innerText = cocktailName.innerText;
+            }
+            else{
 
-            //     cocktailName.innerText = userEntry;
-            //     myUser.recipes[count].cocktailName = userEntry;
-            // }
-            alert("entre")
+                cocktailName.innerText = userEntry;
+                myUser.recipes[count].cocktailName = userEntry;
+            }
+            
 
             $("#modal-recipe-name").removeClass("show");
         });

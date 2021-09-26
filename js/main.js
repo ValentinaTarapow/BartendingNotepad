@@ -1,3 +1,5 @@
+
+
 const ounce = 30; // 1oz = 30ml 
 let count = -1;
 const URLJSON = "../data/data.json";
@@ -41,8 +43,8 @@ $("#btn-info").click(function(){
     $("#btn-close-info").click(function(){
         $("#modal-info").removeClass("show");
     });
+});    
 
-});
 
 $("#btn-new-recipe").click(function(){
     // this function pushes a new empty recipe into the users array and creates a card

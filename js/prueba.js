@@ -30,7 +30,7 @@ class Cocktail{
 
 class Ingredient{
     constructor(){
-        this._id = Ingredient.couner;
+        this._id = Ingredient.counter;
         this.ingredientName = "";
         this.ouncesAmount = "";
         this.alcoholContent = "";
@@ -102,7 +102,6 @@ $("#btn-new-recipe").click(function(){
         let input = document.querySelector("input[name='recipeName']");
 
         $("#btn-cancel-recipe").click(function(){
-            input.value = "";
             $("#modal-recipe-name").removeClass("show");
         });
 

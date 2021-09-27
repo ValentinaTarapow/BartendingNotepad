@@ -117,7 +117,7 @@ body{
 
 #alertZone{
 
-    #alert-success{
+    #alert-added, #alert-deleted{
         display: none;
     }
 
@@ -168,12 +168,22 @@ body{
 
 .pop-modal{
     border: solid black;
+    border-radius: 3px ;
     background-color: $color1;
     color: white;
+    text-align: center;
 
     h3{
         // font-family: 'Architects Daughter', cursive;
         color: $color2;
+    }
+
+
+
+    #modal-operations{
+        button{
+            padding:0;
+        }
     }
 }
 

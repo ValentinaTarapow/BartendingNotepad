@@ -49,7 +49,7 @@
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                 </button>
-                                <ul class="dropdown-menu text-align-center text-center d-row " aria-labelledby="dropdownMenuButton1">
+                                <ul class="dropdown-menu text-align-center text-center d-row p-3 " aria-labelledby="dropdownMenuButton1">
                                     <li id="greeting-user"></li>
                                     <li><button id="edit-user-name" class="btn"><i class="fa fa-pencil" aria-hidden="true">Edit name</i></button></li>
                                 </ul>
@@ -74,7 +74,7 @@
             <form id="modal-user-card" class="pop-modal pop-up-wrap w-25">
                 <h3 class="m-2">Edit user name</h3>
                 <input type="text" name="userName" id="input-user" class="w-75 m-2" placeholder="Insert user name">
-                <div class="d-flex flex-row justify-content-around">
+                <div class="d-flex flex-row justify-content-around" id="modal-operations">
                     <button type="reset" class="btn bg-danger p-3 m-2" id="btn-cancel-user"> Cancel </button>
                     <button class="btn bg-success p-3 m-2" id="btn-save-user"> Save </button>
                 </div>
@@ -102,7 +102,7 @@
                 <form id="modal-recipe-name-card" class="pop-modal pop-up-wrap w-25">
                     <h3 class="m-2">Edit recipe name</h3>
                     <input type="text" name="recipeName" id="input-recipe" class="w-75 m-2" placeholder="Insert recipe name">
-                    <div class="d-flex flex-row justify-content-around">
+                    <div class="d-flex flex-row justify-content-around" id="modal-operations">
                         <button type="reset" class="btn bg-danger p-3 m-2" id="btn-cancel-recipe"> Cancel </button>
                         <button class="btn bg-success p-3 m-2" id="btn-save-recipe"> Save </button>
                     </div>
@@ -129,7 +129,7 @@
                         <input type="number" id="input-ing-alcohol" class="w-75 form-control" min="0" step="0.1" placeholder="Alcohol content">
                         <label for="input-ing-alcohol" class="d-flex justify-content-center align-items-end">Alc./vol.</label>
                     </div>
-                    <div class="d-flex flex-row justify-content-around">
+                    <div class="d-flex flex-row justify-content-around" id="modal-operations">
                         <button type="reset" class="btn bg-danger p-3 m-2" id="btn-cancel-ingredient"> Cancel </button>
                         <button class="btn bg-success p-3 m-2" id="btn-save-ingredient"> Save </button>
                     </div>
@@ -137,8 +137,13 @@
             </div>
 
             <div id="alertZone">
-                <div class="alert alert-success alert-dismissible" id="alert-success">
+                <div class="alert alert-success alert-dismissible" id="alert-added">
                     <b>Congrats!</b> New recipe added down below ⬇
+                    <button type="button" class="btn-close" id="btn-close-alert" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <div class="alert alert-danger alert-dismissible" id="alert-deleted">
+                    <b>Recipe deleted succesfully</b>
                     <button type="button" class="btn-close" id="btn-close-alert" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             </div>

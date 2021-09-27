@@ -84,7 +84,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center; }
-  #alertZone #alert-success {
+  #alertZone #alert-added, #alertZone #alert-deleted {
     display: none; }
   #alertZone #btn-close-alert {
     border: none; }
@@ -113,10 +113,14 @@ body {
 
 .pop-modal {
   border: solid black;
+  border-radius: 3px;
   background-color: #0D0D0D;
-  color: white; }
+  color: white;
+  text-align: center; }
   .pop-modal h3 {
     color: #F23545; }
+  .pop-modal #modal-operations button {
+    padding: 0; }
 
 #btn-info {
   cursor: pointer; }

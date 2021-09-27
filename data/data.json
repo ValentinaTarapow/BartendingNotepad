@@ -1,11 +1,67 @@
 {
-    "ClassicRecipe1":{
-    "name":"Caipiroska",
-    "ingredients":["Vodka", "Lime", "Sugar"]
-    },
-
-    "ClassicRecipe2":{
-        "name":"Cuba Libre",
-        "ingredients":["Rum", "Lemon", "Cola"]
+    "recipes": [
+        {
+            "name": "Caipiroska",
+            "ingredients": [
+                {
+                    "ingredientName":"Vodka",
+                    "measure": "ounces",
+                    "amount": "2",
+                    "alcoholContent": "40"
+                },
+                {
+                    "ingredientName":"Lime",
+                    "measure": "wedges",
+                    "amount": "4",
+                    "alcoholContent": "0"
+                },
+                {
+                    "ingredientName":"Sugar",
+                    "measure": "tablespoons",
+                    "amount": "2",
+                    "alcoholContent": "0"
+                }
+            ]
+        },
+        {
+            "name": "Cuba Libre",
+            "ingredients": [
+                {
+                    "ingredientName":"Rum",
+                    "measure": "ounces",
+                    "amount": "1.5",
+                    "alcoholContent": "40"
+                },
+                {
+                    "ingredientName":"Coca-Cola",
+                    "measure": "ounces",
+                    "amount": "4",
+                    "alcoholContent": "0"
+                }
+            ]
+        },
+        {
+            "name": "Negroni",
+            "ingredients": [
+                {
+                    "ingredientName":"Gin",
+                    "measure": "ounces",
+                    "amount": "1",
+                    "alcoholContent": "40"
+                },
+                {
+                    "ingredientName":"Vermouth Rosso",
+                    "measure": "ounces",
+                    "amount": "1",
+                    "alcoholContent": "15"
+                },
+                {
+                    "ingredientName":"Campari",
+                    "measure": "ounces",
+                    "amount": "1",
+                    "alcoholContent": "25"
+                }
+            ]
         }
+    ]
 }

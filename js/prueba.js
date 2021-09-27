@@ -32,7 +32,8 @@ class Ingredient{
     constructor(){
         this._id = Ingredient.counter;
         this.ingredientName = "";
-        this.ouncesAmount = "";
+        this.measure = "";
+        this.amount = "";
         this.alcoholContent = "";
     }
 
@@ -87,10 +88,10 @@ $("#btn-new-recipe").click(function(){
         </div>
         `;
 
-    $("#alert-success").fadeIn(300).delay(1500).fadeOut(400);
+    $("#alert-added").fadeIn(300).delay(1500).fadeOut(400);
 
     recipe.classList.add("card-recipe");
-    recipe.setAttribute("id","recipe-" + count);
+    recipe.setAttribute("id","recipe-" + newCocktail.getId());
 
     gridRecipes.appendChild(recipe);
 
@@ -100,13 +101,13 @@ $("#btn-new-recipe").click(function(){
         $("#modal-recipe-name").addClass("show");
 
         let input = document.querySelector("input[name='recipeName']");
+        let cocktailName = document.getElementById(`recipe-name-${newCocktail.getId()}`);
 
         $("#btn-cancel-recipe").click(function(){
             $("#modal-recipe-name").removeClass("show");
         });
 
         $("#btn-save-recipe").click(function(){
-
             let userEntry = input.value;
             let targetCard = e.currentTarget.parentNode.id; 
             console.log(targetCard);
@@ -117,9 +118,8 @@ $("#btn-new-recipe").click(function(){
                 cocktailName.innerText = cocktailName.innerText;
             }
             else{
-
                 cocktailName.innerText = userEntry;
-                myUser.recipes[count].cocktailName = userEntry;
+                myUser.recipes[newCocktail.getId()].cocktailName = userEntry;
             }
             
 
@@ -147,9 +147,11 @@ $("#btn-new-recipe").click(function(){
         //this function erases the card where this event is called and erases the element from the recipes array
             e.currentTarget.parentNode.parentNode.parentNode.remove();
             // myUser.recipes = myUser.recipes.filter( element => element.id !== id);
+            $("#alert-deleted").fadeIn(300).delay(1500).fadeOut(400);
         });
     
-        // new-ingredient
+        //new-ingredient
+            // falta usar el modal, ya esta en el html
         $(`btn-new-ingredient-${newCocktail.getId()}`).click(function(e){
             newIngredient(btnNewIngredient.id.slice(-1))
         });
@@ -225,17 +227,17 @@ $("#btn-new-recipe").click(function(){
 
 
 
-
-
-
-
-
-
 // delete all recipes
 $("#btn-delete-all").click(function(){
+    //clear the grid
     let gridRecipes = document.getElementById("recipes-grid");
     gridRecipes.innerHTML = "";
 
+    //restart the instance counter
+    Cocktail._counter = 0;
+    Ingredient._counter = 0;
+
+    //empty the array
     while(myUser.recipes.length > 0){
         myUser.recipes.pop();
     }
@@ -250,10 +252,6 @@ $("#btn-delete-all").click(function(){
 
     $("#edit-user-name").click(function(){
         $("#modal-user").addClass("show");
-
-        $("#input-user").on("click",function(){
-            this.value='';
-        });
 
         $("#btn-cancel-user").click(function(){
             $("#modal-user").removeClass("show");

@@ -95,23 +95,29 @@ $("#btn-new-recipe").click(function(){
 
     // edit-recipe-name button
     $(`#btn-edit-recipe-name-${index}`).click(function(e){
-
         $("#modal-recipe-name").addClass("show");
+        console.log(index);
 
         $("#btn-save-recipe-name").click(function(){
+            console.log(index + "entro a save recipe");
             let userEntry = $("input[name='recipeName']").val();
-
-
+            
             if((userEntry == null) || (userEntry == "")){
+                console.log(index + " si es vacio");
+
                 $(`#recipe-name-${index}`).text(myUser.recipes[index].cocktailName);
             }
             else{
-                $(`#recipe-name-${index}`).text(userEntry);
+                console.log(index + " no es vacio");
+
                 myUser.recipes[index].cocktailName = userEntry;
+                $(`#recipe-name-${index}`).text(myUser.recipes[index].cocktailName);
             }
-        
+            console.log(index + " por guardarse");
+
             $("input[name='recipeName']").val('')
             $("#modal-recipe-name").removeClass("show");
+            console.log(index + " se guarda");
         });
 
         $("#btn-cancel-recipe-name").click(function(){

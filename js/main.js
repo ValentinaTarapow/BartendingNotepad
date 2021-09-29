@@ -6,7 +6,7 @@ const URLJSON = "../data/data.json";
 class User{
     constructor(){
         this.userName = "";
-        this.recipes = [0];
+        this.recipes = [];
     }
 }
 
@@ -14,7 +14,7 @@ class Cocktail{
     constructor(){
         this._id = Cocktail.counter;
         this.cocktailName = "NewCocktail";
-        this.ingredients = [0];
+        this.ingredients = [];
         this.glassware = "";
     }
 
@@ -59,7 +59,7 @@ $("#btn-info").click(function(){
 $("#btn-new-recipe").click(function(){
     // this function pushes a new empty recipe into the users array and creates a card
     const newCocktail = new Cocktail();
-    const index = newCocktail.getId()
+    const index = newCocktail.getId();
     myUser.recipes[index] = newCocktail;
     // myUser.recipes[0] += 1
     
@@ -100,6 +100,7 @@ $("#btn-new-recipe").click(function(){
 
         $("#btn-save-recipe-name").click(function(){
             let userEntry = $("input[name='recipeName']").val();
+
 
             if((userEntry == null) || (userEntry == "")){
                 $(`#recipe-name-${index}`).text(myUser.recipes[index].cocktailName);

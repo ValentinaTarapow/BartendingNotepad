@@ -93,36 +93,37 @@ $("#btn-new-recipe").click(function(){
     $("#alert-added").fadeIn(300).delay(1500).fadeOut(400);
 
 
-    // edit-recipe-name button
-    $(`#btn-edit-recipe-name-${index}`).click(function(e){
-        $("#modal-recipe-name").addClass("show");
-        console.log(index);
 
-        $("#btn-save-recipe-name").click(function(){
-            console.log(index + "entro a save recipe");
+    $("#btn-cancel-recipe-name").click(function(){
+        $("#modal-recipe-name").removeClass("show");
+    });
+
+    // edit-recipe-name button
+    $(`#btn-edit-recipe-name-${index}`).click(function(event){
+        $("#modal-recipe-name").addClass("show");
+
+        //obtaining the numbers from the id to use it as index
+        const saveId = $(this).attr('id');
+        const saveIndex = saveId.match(/\d+/).map(Number)
+        console.log(saveIndex);
+    
+        $(`#btn-save-recipe-name`).click(function(){
             let userEntry = $("input[name='recipeName']").val();
             
             if((userEntry == null) || (userEntry == "")){
-                console.log(index + " si es vacio");
-
-                $(`#recipe-name-${index}`).text(myUser.recipes[index].cocktailName);
+                $(`#recipe-name-${saveIndex}`).text(myUser.recipes[saveIndex].cocktailName);
             }
             else{
-                console.log(index + " no es vacio");
-
-                myUser.recipes[index].cocktailName = userEntry;
-                $(`#recipe-name-${index}`).text(myUser.recipes[index].cocktailName);
+                myUser.recipes[saveIndex].cocktailName = userEntry;
+                $(`#recipe-name-${saveIndex}`).text(myUser.recipes[saveIndex].cocktailName);
             }
-            console.log(index + " por guardarse");
 
             $("input[name='recipeName']").val('')
             $("#modal-recipe-name").removeClass("show");
-            console.log(index + " se guarda");
+            $("#btn-save-recipe-name").unbind()
         });
-
-        $("#btn-cancel-recipe-name").click(function(){
-            $("#modal-recipe-name").removeClass("show");
-        });
+        
+        
     });
 
     // ------------------------------------------

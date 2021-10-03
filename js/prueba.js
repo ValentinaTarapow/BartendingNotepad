@@ -1,3 +1,6 @@
+
+
+// measures equivalence
 const ounce = 30; // 1oz = 30ml 
 let storagedUser;
 const URLJSON = "../data/data.json";
@@ -45,6 +48,10 @@ class Ingredient{
         Ingredient._counter = (Ingredient._counter || 0) + 1;
         return Ingredient._counter;
     }
+
+    show(){
+        return(this.ingredientName + " (" + this.alcoholContent + " %Alc./Vol)" + " - " + this.amount + this.measure );
+    }
 }
 // --------------------------------------------------------------------------
 
@@ -55,6 +62,12 @@ $("#btn-info").click(function(){
         $("#modal-info").removeClass("show");
     });
 });
+
+// const numero = "aver-12-34";
+// const prueba = numero.match(/\d+/g).map(Number);
+// console.log(prueba[0]);
+// console.log(prueba[1])
+
 
 $("#btn-new-recipe").click(function(){
     // this function pushes a new empty recipe into the users array and creates a card
@@ -93,33 +106,33 @@ $("#btn-new-recipe").click(function(){
     $("#alert-added").fadeIn(300).delay(1500).fadeOut(400);
 
 
-
-    $("#btn-cancel-recipe-name").click(function(){
-        $("#modal-recipe-name").removeClass("show");
-    });
-
     // edit-recipe-name button
     $(`#btn-edit-recipe-name-${index}`).click(function(event){
         $("#modal-recipe-name").addClass("show");
 
         //obtaining the numbers from the id to use it as index
-        const saveId = $(this).attr('id');
-        const saveIndex = saveId.match(/\d+/).map(Number);
+        const saveIdEdit = $(this).attr('id');
+        const saveRecipeIndex = saveIdEdit.match(/\d+/).map(Number);
     
         $(`#btn-save-recipe-name`).click(function(){
             let userEntry = $("input[name='recipeName']").val();
             
             if((userEntry == null) || (userEntry == "")){
-                $(`#recipe-name-${saveIndex}`).text(myUser.recipes[saveIndex].cocktailName);
+                $(`#recipe-name-${saveRecipeIndex}`).text(myUser.recipes[saveRecipeIndex].cocktailName);
             }
             else{
-                myUser.recipes[saveIndex].cocktailName = userEntry;
-                $(`#recipe-name-${saveIndex}`).text(myUser.recipes[saveIndex].cocktailName);
+                myUser.recipes[saveRecipeIndex].cocktailName = userEntry;
+                $(`#recipe-name-${saveRecipeIndex}`).text(myUser.recipes[saveRecipeIndex].cocktailName);
             }
 
             $("input[name='recipeName']").val('')
             $("#modal-recipe-name").removeClass("show");
             //unbinding the event from the button
+            $("#btn-save-recipe-name").unbind()
+        });
+
+        $("#btn-cancel-recipe-name").click(function(){
+            $("#modal-recipe-name").removeClass("show");
             $("#btn-save-recipe-name").unbind()
         });
     });
@@ -150,74 +163,50 @@ $("#btn-new-recipe").click(function(){
         //new-ingredient
             // falta usar el modal, ya esta en el html
         $(`#btn-new-ingredient-${index}`).click(function(e){
-            newIngredient(index)
+            
+            $("#modal-ingredient").addClass("show");
+            
+            const saveIdNewIngr = $(this).attr('id');
+            const saveRecipeIndexIngr = saveIdNewIngr.match(/\d+/).map(Number);
+            
+            
+
+            $(`#btn-save-ingredient`).click(function(){
+                const newIngredient = new Ingredient();
+
+                const index = newIngredient.getId();
+
+                let userIngredientName = $("input[name='input-ing-name']").val();
+                let userIngredientAmount = $("input[name='input-ing-amount']").val();
+                let userIngredientMeasure = $("#input-ing-measure").val();
+                let userIngredientAlcohol = $("input[name='input-ing-alcohol']").val();
+
+                newIngredient.ingredientName = userIngredientName;
+                newIngredient.amount = userIngredientAmount;
+                newIngredient.measure = userIngredientMeasure;
+                newIngredient.alcoholContent = userIngredientAlcohol;
+
+                myUser.recipes[saveRecipeIndexIngr].ingredients[index] = newIngredient;
+                
+                $(`listIngredients-${saveRecipeIndexIngr}`).append(`
+                    <li id="item-ingredient-${saveRecipeIndexIngr}-${index}" class="list-ingr-item d-flex flex-row justify-content-start">
+                        ${newIngredient.show()}
+                    </li> 
+                `);
+
+                $("input").val('');
+                $('#baba option:first').prop('selected',true);
+                $("#modal-ingredient").removeClass("show");
+                //unbinding the event from the button
+                $("#btn-save-ingredient").unbind()
+            });
+
+            $(`#btn-cancel-ingredient`).click(function(){
+                $("#modal-ingredient").removeClass("show");
+                $("#btn-save-ingredient").unbind()
+            });
         });
 
-        function newIngredient(id){
-            let listIngredients = document.getElementById(`listIngredients-${id}`);
-            console.log(listIngredients)
-            let listItem = document.createElement("li");
-            listItem.setAttribute("id",`item-ingredient-${id}`);
-            let userEntry = prompt("Please enter ingredient data")
-            while (userEntry === "") userEntry = prompt("Please enter ingredient data")
-            
-            let condition = myUser.recipes[id].ingredients.find(ingredient => ingredient === userEntry)
-            
-            while (condition) {
-                userEntry = prompt("This ingredient already exists, please enter a new one")
-                condition = myUser.recipes[id].ingredients.find(ingredient => ingredient === userEntry)
-            }
-    
-            if(userEntry == null){
-    
-    
-            } else {
-                myUser.recipes[id].ingredients.push(userEntry)
-                
-                console.log(myUser.recipes[id].ingredients)
-                
-                listItem.innerHTML = 
-                    `
-                        <p class="d-inline" >${userEntry}</p>
-                    `;
-    
-                listItem.classList.add("d-flex");
-                listItem.classList.add("flex-row");
-                listItem.classList.add("justify-content-start");
-                listItem.classList.add("list-ingr-item")
-    
-    
-    
-    
-                // delete-ingredient
-                    let btnDeleteIngredient = document.createElement("button");
-                    btnDeleteIngredient.setAttribute("id",`btn-delete-ingredient-${id}`);
-                    btnDeleteIngredient.setAttribute("title","Delete ingredient");
-                    
-                    btnDeleteIngredient.classList.add("bg-danger");
-                    btnDeleteIngredient.classList.add("d-inline");
-                    btnDeleteIngredient.classList.add("me-1")
-                    btnDeleteIngredient.classList.add("btn-delete-ingredient")
-    
-                    btnDeleteIngredient.innerHTML=
-                    `
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    `;
-    
-                    btnDeleteIngredient.addEventListener("click",(e)=>{
-                        
-                        e.currentTarget.parentNode.parentNode.removeChild(e.currentTarget.parentNode);                
-                        // CAMBIAR PARA ADAPTARSE A MODELO DE ARRAY CON ESPACIOS VACIOS
-                        // myUser.recipes[id].ingredients = myUser.recipes[id].ingredients.filter(ingredient => ingredient !== userEntry)
-                        
-                    });
-                    
-                    listItem.prepend(btnDeleteIngredient);
-                    listIngredients.appendChild(listItem);
-                // ------------------------------------------
-    
-            }
-        }
 });
 
 
@@ -248,7 +237,6 @@ $("#btn-delete-all").click(function(){
     //user creation
     const myUser = new User();
 
-    
     let greetingUserSection = document.getElementById("greeting-user");
 
     $("#edit-user-name").click(function(){
@@ -284,6 +272,7 @@ $("#btn-delete-all").click(function(){
         // AJAX
         $.getJSON(URLJSON, function (_staticRecipes) {
             console.log(_staticRecipes);
+  
         });
 
         // STORAGE

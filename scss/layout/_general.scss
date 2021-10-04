@@ -50,7 +50,7 @@ body{
 
 #recipes-grid {
     margin: 20px;
-    width: 95vw;
+    width: 92vw;
     display: grid;
     grid-template-areas: "a a a";
     grid-gap: 10px;
@@ -189,4 +189,20 @@ body{
 
 #btn-info{
     cursor: pointer;
+}
+
+#carouselExampleIndicators{
+    button{
+        border: none;
+    }
+}
+
+#favorite-title{
+    font-family: 'Architects Daughter', cursive;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#pop-carousel{
+    height: 30%;
 }

@@ -1,7 +1,7 @@
 {
-    "_staticRecipes": [
+    "staticRecipes": [
         {
-            "name": "Caipiroska",
+            "cocktailName": "Caipiroska",
             "ingredients": [
                 {
                     "ingredientName": "Vodka",
@@ -24,7 +24,7 @@
             ]
         },
         {
-            "name": "Cuba Libre",
+            "cocktailName": "Cuba Libre",
             "ingredients": [
                 {
                     "ingredientName": "Rum",
@@ -37,11 +37,17 @@
                     "measure": "ounces",
                     "amount": "4",
                     "alcoholContent": "0"
+                },
+                {
+                    "ingredientName": "Lemon",
+                    "measure": "wedges",
+                    "amount": "2",
+                    "alcoholContent": "0"
                 }
             ]
         },
         {
-            "name": "Negroni",
+            "cocktailName": "Negroni",
             "ingredients": [
                 {
                     "ingredientName":"Gin",

@@ -29,31 +29,21 @@
 
 <body id="recipes-page">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid">
-                <button class="navbar-toggler border-dark " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a title="brand" id="brand" class="navbar-brand" href="#">Bartending Notepad</a>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-around w-100">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" id="btn-info"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
-                        </li>
 
-                        <li class="nav-item">
-                            <div class="dropdown"> 
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                </button>
-                                <ul class="dropdown-menu text-align-center text-center d-row p-3 " aria-labelledby="dropdownMenuButton1">
-                                    <li id="greeting-user"></li>
-                                    <li><button id="edit-user-name" class="btn"><i class="fa fa-pencil" aria-hidden="true">Edit name</i></button></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+        <nav class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-around align-items-center ms-3">
+                <a title="brand" id="brand" href="#">Bartending Notepad</a>
+                <a class="nav-link text-light" id="btn-info"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
+            </div>
+
+            <div class="dropdown me-3"> 
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </button>
+                <ul class="dropdown-menu text-align-center text-center d-row p-3 " aria-labelledby="dropdownMenuButton1">
+                    <li id="greeting-user"></li>
+                    <li><button id="edit-user-name" class="btn"><i class="fa fa-pencil" aria-hidden="true">Edit name</i></button></li>
+                </ul>
             </div>
         </nav>
 
@@ -81,6 +71,7 @@
 
 
     <main id="recipes-main" class="bg-note">
+
         <section>
             <div class="operations w-100 mt-3 d-flex justify-content-evenly">
                 <div class="non-dangerous d-flex flex-row justify-content-between">
@@ -88,10 +79,49 @@
                         <input type="text" class="form-control" placeholder="Search..." id="search">
                         <button><i class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
+                    <button class="btn btn-warning me-2" id="btn-favorites" title="Our favorites"><i class="fa fa-star" aria-hidden="true"></i></button>
                     <button class="btn bg-success p-3" id="btn-new-recipe"><i class="fa fa-plus" aria-hidden="true"> New recipe</i></button>
                 </div>
                 <div class="dangerous">
                     <button class="btn bg-danger p-3" id="btn-delete-all"><i class="fa fa-trash" aria-hidden="true"> Delete all</i></button>
+                </div>
+            </div>
+
+            <div id="modal-favorites" class="pop-up">
+                <div id="pop-carousel" class="pop-modal pop-up-wrap w-50">
+                    <div id="carouselExampleIndicators" class="carousel carousel-dark slide h-100" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                        </div>
+                        <div id="carousel-inner" class="carousel-inner h-100"></div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="modal-delete-confirmation" class="pop-up">
+                <div class="pop-modal pop-up-wrap w-25">
+                    <h3 class="m-2">⚠️  Are you sure you want to delete all recipes?  ⚠️</h3>
+                    <div class="d-flex flex-row justify-content-around" id="modal-operations">
+                        <button type="button" class="btn bg-danger p-3 m-2" id="btn-delete-all-cancel"> Cancel </button>
+                        <button type="button" class="btn bg-success p-3 m-2" id="btn-delete-all-accept"> Accept </button>
+                    </div>
                 </div>
             </div>
 
@@ -162,7 +192,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
         integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous">
     </script>
-
 
     <!-- JQUERY -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

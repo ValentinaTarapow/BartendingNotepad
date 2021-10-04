@@ -122,6 +122,8 @@ $("#btn-new-recipe").click(function(){
             //unbinding the event from the button
             $("#btn-save-recipe-name").unbind()
         });
+        
+        
     });
 
     // ------------------------------------------
@@ -154,6 +156,7 @@ $("#btn-new-recipe").click(function(){
         });
 
         function newIngredient(id){
+            console.log('entro a new')
             let listIngredients = document.getElementById(`listIngredients-${id}`);
             console.log(listIngredients)
             let listItem = document.createElement("li");
@@ -304,5 +307,6 @@ $("#btn-delete-all").click(function(){
     function createStaticRecipe(recipe){
         $("#recipes-grid").append(
             `
+
             `);
     }

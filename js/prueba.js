@@ -1,6 +1,3 @@
-
-
-// measures equivalence
 const ounce = 30; // 1oz = 30ml 
 let storagedUser;
 const URLJSON = "../data/data.json";
@@ -18,7 +15,6 @@ class Cocktail{
         this._id = Cocktail.counter;
         this.cocktailName = "NewCocktail";
         this.ingredients = [];
-        this.glassware = "";
     }
 
     getId(){
@@ -63,10 +59,10 @@ $("#btn-info").click(function(){
     });
 });
 
-// const numero = "aver-12-34";
-// const prueba = numero.match(/\d+/g).map(Number);
-// console.log(prueba[0]);
-// console.log(prueba[1])
+const numero = "aver-12-34";
+const prueba = numero.match(/\d+/g).map(Number);
+console.log(prueba[0]);
+console.log(prueba[1])
 
 
 $("#btn-new-recipe").click(function(){
@@ -110,19 +106,19 @@ $("#btn-new-recipe").click(function(){
     $(`#btn-edit-recipe-name-${index}`).click(function(event){
         $("#modal-recipe-name").addClass("show");
 
-        //obtaining the numbers from the id to use it as index
-        const saveIdEdit = $(this).attr('id');
-        const saveRecipeIndex = saveIdEdit.match(/\d+/).map(Number);
-    
+        //obtaining the numbers from the id to use it as target index variable
+        const IdEditRecipeName = $(this).attr('id');
+        const IndexEditRecipeName = IdEditRecipeName.match(/\d+/).map(Number);
+
         $(`#btn-save-recipe-name`).click(function(){
             let userEntry = $("input[name='recipeName']").val();
             
             if((userEntry == null) || (userEntry == "")){
-                $(`#recipe-name-${saveRecipeIndex}`).text(myUser.recipes[saveRecipeIndex].cocktailName);
+                $(`#recipe-name-${IndexEditRecipeName}`).text(myUser.recipes[IndexEditRecipeName].cocktailName);
             }
             else{
-                myUser.recipes[saveRecipeIndex].cocktailName = userEntry;
-                $(`#recipe-name-${saveRecipeIndex}`).text(myUser.recipes[saveRecipeIndex].cocktailName);
+                myUser.recipes[IndexEditRecipeName].cocktailName = userEntry;
+                $(`#recipe-name-${IndexEditRecipeName}`).text(myUser.recipes[IndexEditRecipeName].cocktailName);
             }
 
             $("input[name='recipeName']").val('')
@@ -152,7 +148,7 @@ $("#btn-new-recipe").click(function(){
 
         // delete recipe
         $(`#btn-delete-recipe-${index}`).click(function(e){
-        //this function erases the card where this event is called and erases the element from the recipes array
+            //this function erases the card where this event is called and empties the element from the recipes array
             $(`#recipe-${index}`).remove()
             // e.currentTarget.parentNode.parentNode.parentNode.remove();
             delete myUser.recipes[index]
@@ -161,19 +157,18 @@ $("#btn-new-recipe").click(function(){
         });
     
         //new-ingredient
-            // falta usar el modal, ya esta en el html
         $(`#btn-new-ingredient-${index}`).click(function(e){
-            
             $("#modal-ingredient").addClass("show");
-            
-            const saveIdNewIngr = $(this).attr('id');
-            const saveRecipeIndexIngr = saveIdNewIngr.match(/\d+/).map(Number);
-            
-            
+        
+            //obtaining the numbers from the id to use it as target index variable
+            const IdNewIngredient = $(this).attr('id');
+            const IndexNewIngredient = IdNewIngredient.match(/\d+/).map(Number);
 
+            //save new ingredient event
             $(`#btn-save-ingredient`).click(function(){
-                const newIngredient = new Ingredient();
+                //this event obtains the values from the modal inputs, pushes this data to the ingredients array and shows it
 
+                const newIngredient = new Ingredient();
                 const index = newIngredient.getId();
 
                 let userIngredientName = $("input[name='input-ing-name']").val();
@@ -186,31 +181,49 @@ $("#btn-new-recipe").click(function(){
                 newIngredient.measure = userIngredientMeasure;
                 newIngredient.alcoholContent = userIngredientAlcohol;
 
-                myUser.recipes[saveRecipeIndexIngr].ingredients[index] = newIngredient;
+                myUser.recipes[IndexNewIngredient].ingredients[index] = newIngredient;
                 
-                $(`listIngredients-${saveRecipeIndexIngr}`).append(`
-                    <li id="item-ingredient-${saveRecipeIndexIngr}-${index}" class="list-ingr-item d-flex flex-row justify-content-start">
+                $(`#listIngredients-${IndexNewIngredient}`).append(`
+                    <li id="item-ingredient-${IndexNewIngredient}-${index}" class="list-ingr-item d-flex flex-row justify-content-start">
+                        <button id="btn-delete-ingredient-${IndexNewIngredient}-${index}" class="bg-danger d-inline me-1 btn-delete-ingredient">
+                            <i class="fa fa-times" aria-hidden="true" title="Delete ingredient"></i>
+                        </button> 
                         ${newIngredient.show()}
                     </li> 
                 `);
 
+                //delete ingredient
+                $(`#btn-delete-ingredient-${IndexNewIngredient}-${index}`).click(function(){
+                    //this function erases the ingredient where this event is called and empties the element from the ingredients array
+                    const IdDeleteIngredient = $(this).attr('id');
+                    const IndexDeleteIngredient = IdDeleteIngredient.match(/\d+/g).map(Number)
+
+                    //extracts the first number correspondent to the recipe/card
+                    const IndexRecipe = IndexDeleteIngredient[0];
+                    //extracts the second number correspondent to the ingredient/list item
+                    const IndexIngredient = IndexDeleteIngredient[1];
+                    
+
+                    delete myUser.recipes[IndexRecipe].ingredients[IndexIngredient];
+                    $(`#item-ingredient-${IndexRecipe}-${IndexIngredient}`).remove();            
+                });
+
                 $("input").val('');
-                $('#baba option:first').prop('selected',true);
+                $('#input-ing-measure option:first').prop('selected',true);
                 $("#modal-ingredient").removeClass("show");
                 //unbinding the event from the button
                 $("#btn-save-ingredient").unbind()
             });
 
+            
+
+            //cancel new ingredient event
             $(`#btn-cancel-ingredient`).click(function(){
                 $("#modal-ingredient").removeClass("show");
                 $("#btn-save-ingredient").unbind()
             });
         });
-
 });
-
-
-
 
 
 // delete all recipes
@@ -270,10 +283,9 @@ $("#btn-delete-all").click(function(){
     $(document).ready(function(){   
 
         // AJAX
-        $.getJSON(URLJSON, function (_staticRecipes) {
-            console.log(_staticRecipes);
-  
-        });
+        // $.getJSON(URLJSON, function (_staticRecipes) {
+        //     console.log(_staticRecipes);
+        // });
 
         // STORAGE
         if(storagedUser) {
@@ -284,14 +296,27 @@ $("#btn-delete-all").click(function(){
         `
             Welcome back, <span class="text-danger"> ${storagedUser.userName}</span>!
         `;
+
         }
         else{
             greetingUserSection.innerHTML= "";
         }
     });
 
-    function createStaticRecipe(recipe){
-        $("#recipes-grid").append(
-            `
-            `);
+
+    function EmptyNullEvaluator(data){
+        //this function evaluates if data is null or filled with spaces
+        const length = data.length;
+        let count = 0;
+
+        for(let i = 0; i < length; i++){
+            let ascii = data.charCodeAt(i);
+
+            if ((ascii == 00) || (ascii == 32)){
+                count++;
+            }
+        }
+
+        //if every character is null/space returns true and the entry is not allowed to use
+        return (count === length);
     }

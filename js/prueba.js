@@ -1,6 +1,6 @@
 const ounce = 30; // 1oz = 30ml 
 let storagedUser;
-const URLJSON = "../data/data.json";
+const URLJSON = "./data/data.json";
 // ------------ CLASSES DEFINITION ------------
 
 class User{

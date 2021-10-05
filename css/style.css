@@ -26,7 +26,7 @@ body {
   color: #FFFFFF; }
   .section-divided h1 {
     margin-bottom: 1rem;
-    background-color: #F23545;
+    background-color: #3053D1;
     text-decoration: underline; }
 
 #recipes-main button {
@@ -48,7 +48,7 @@ body {
     border: black 3px solid; }
     #recipes-grid .card-recipe .recipe-title {
       font-family: 'Architects Daughter', cursive;
-      background-color: #F23545;
+      background-color: #6f87df;
       border-bottom: solid black;
       text-align: center; }
     #recipes-grid .card-recipe h2 {
@@ -57,7 +57,7 @@ body {
       text-align: center; }
     #recipes-grid .card-recipe h3 {
       font-size: 1.5rem;
-      color: #F23545;
+      color: #3053D1;
       font-family: 'Architects Daughter', cursive; }
     #recipes-grid .card-recipe #card-body {
       font-family: 'Rajdhani', sans-serif;
@@ -119,7 +119,7 @@ body {
   color: white;
   text-align: center; }
   .pop-modal h3 {
-    color: #F23545; }
+    color: #3053D1; }
   .pop-modal #modal-operations button {
     padding: 0; }
 
@@ -138,10 +138,15 @@ body {
   height: 30%; }
 
 #brand {
-  color: #F23545;
+  color: #3053D1;
   font-family: 'Architects Daughter', cursive;
   font-weight: bold;
   font-size: 2.2rem; }
+
+#dropdownMenu {
+  background-color: #3053D1; }
+  #dropdownMenu i {
+    color: white; }
 
 nav {
   background-color: #0D0D0D;
@@ -150,7 +155,7 @@ nav {
   nav #btn-info {
     margin-left: 10px; }
     nav #btn-info:hover {
-      border-bottom: 2px solid #F23545; }
+      border-bottom: 2px solid #3053D1; }
 
 footer {
   background-color: #0D0D0D;
@@ -165,6 +170,6 @@ footer {
   align-items: center; }
   footer a {
     text-decoration: none;
-    color: #F23545; }
+    color: #a6a4a5; }
     footer a:hover {
-      color: yellow !important; }
+      color: #3053D1 !important; }

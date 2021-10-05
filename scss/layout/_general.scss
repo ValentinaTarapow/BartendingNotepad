@@ -63,7 +63,7 @@ body{
 
         .recipe-title{
             font-family: 'Architects Daughter', cursive;
-            background-color: $color2;
+            background-color: lighten($color2, 15%);
             border-bottom: solid black;
             text-align: center;
         }
@@ -151,12 +151,6 @@ body{
     visibility: hidden;
 }
 
-// .pop-up-wrap{
-//     // border: solid black;
-//     // background-color: $color1;
-//     // color: white;
-//     // width: 40%;
-// }
 
 .show {
     visibility: visible;

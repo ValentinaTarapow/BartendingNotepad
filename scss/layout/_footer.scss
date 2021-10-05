@@ -12,10 +12,10 @@ footer{
 
     a{
         text-decoration: none;
-        color: $color2;
+        color:lighten($color3 , 40%);
 
         &:hover{
-            color: yellow !important;
+            color: $color2 !important;
         }
     }
 }

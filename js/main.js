@@ -331,6 +331,24 @@ $("#btn-favorites").click(function(){
                     ${storageIngr.ingredientName} (${storageIngr.alcoholContent}%Alc./Vol.) - ${storageIngr.amount} ${storageIngr.measure}
                 </li> 
             `);
+
+            $(`#btn-delete-ingredient-${recipe._id}-${storageIndex}`).click(function(){
+                //this function erases the ingredient where this event is called and empties the element from the ingredients array
+                const IdDeleteIngredient = $(this).attr('id');
+                const IndexDeleteIngredient = IdDeleteIngredient.match(/\d+/g).map(Number)
+
+                //extracts the first number correspondent to the recipe/card
+                const IndexRecipe = IndexDeleteIngredient[0];
+                //extracts the second number correspondent to the ingredient/list item
+                const IndexIngredient = IndexDeleteIngredient[1];
+                
+
+                delete myUser.recipes[IndexRecipe].ingredients[IndexIngredient];
+                $(`#item-ingredient-${IndexRecipe}-${IndexIngredient}`).remove();
+
+                // $(`##btn-delete-ingredient-${IndexNewIngredient}-${index}`).unbind();
+                updateStorage();        
+            });
             }
         }
 
@@ -381,6 +399,7 @@ $("#btn-favorites").click(function(){
             // delete recipe
             $(`#btn-delete-recipe-${index}`).click(function(e){
                 //this function erases the card where this event is called and empties the element from the recipes array
+                //it does not POP it from the array to avoid altering it and the ids
                 $(`#recipe-${index}`).remove()
                 delete myUser.recipes[index];
                 updateStorage();
@@ -440,6 +459,8 @@ $("#btn-favorites").click(function(){
     
                         delete myUser.recipes[IndexRecipe].ingredients[IndexIngredient];
                         $(`#item-ingredient-${IndexRecipe}-${IndexIngredient}`).remove();
+
+                        // $(`##btn-delete-ingredient-${IndexNewIngredient}-${index}`).unbind();
                         updateStorage();        
                     });
     

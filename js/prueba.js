@@ -236,9 +236,9 @@ $("#btn-delete-all").click(function(){
         $("#recipes-grid").append(
             `
             <div id="recipe-${index}" class="card-recipe">
-                <div id="card-title-${index}" class="recipe-title w-100 d-flex flex-row justify-content-between" ">
-                    <h2 id="recipe-name-${index}" class="recipe-name d-inline w-100">${recipe.cocktailName}</h2>
-                    <p id="recipe-id-${index}">${index}</p>
+                <div id="card-title-${index}" class="recipe-title w-100 d-flex flex-row justify-content-between">
+                    <h4 id="recipe-id-${index}" class="d-flex flex-row justify-content-center align-items-center mb-0">#${index}</h4>
+                    <h2 id="recipe-name-${index}" class="recipe-name d-inline w-100 mb-0">${recipe.cocktailName}</h2>
                     <button class="d-inline btn btn-secondary border-top-0 border-bottom-0 border-end-0 rounded-0" id="btn-edit-recipe-name-${index}" title="Edit recipe name"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 </div>
     
@@ -246,7 +246,7 @@ $("#btn-delete-all").click(function(){
                     <div id="recipe-data-${index}" class="w-100">
                         <div>
                             <h3 id="ing-label">Ingredients</h3>
-                            <ul id="listIngredients-${index}" class="listIngredients w-75 container">
+                            <ul id="listIngredients-${index}" class="listIngredients w-100 container">
                             </ul>
                         </div>
                         

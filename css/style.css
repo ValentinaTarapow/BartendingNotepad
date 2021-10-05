@@ -52,10 +52,9 @@ body {
       border-bottom: solid black;
       text-align: center; }
     #recipes-grid .card-recipe h2 {
-      font-size: 3rem;
+      font-size: 2rem;
       color: black;
-      text-align: center;
-      padding-bottom: 0; }
+      text-align: center; }
     #recipes-grid .card-recipe h3 {
       font-size: 1.5rem;
       color: #F23545;
@@ -93,7 +92,9 @@ body {
   height: fit-content; }
 
 .list-ingr-item {
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  margin-bottom: 4px;
+  text-align: left; }
 
 .pop-up {
   background-color: rgba(48, 48, 48, 0.5);

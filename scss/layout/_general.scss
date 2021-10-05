@@ -69,11 +69,10 @@ body{
         }
     
         h2{
-            font-size: 3rem;
+            font-size: 2rem;
             color: black;
             // text-decoration: underline;
             text-align: center;
-            padding-bottom: 0;
         }
         h3{
             font-size: 1.5rem;
@@ -134,6 +133,8 @@ body{
 
 .list-ingr-item{
     word-wrap: break-word;
+    margin-bottom: 4px;
+    text-align: left;
 }
 
 .pop-up{

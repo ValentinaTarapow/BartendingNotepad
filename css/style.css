@@ -113,12 +113,17 @@ body {
   visibility: visible; }
 
 .pop-modal {
-  border: solid black;
+  border: solid 1px #3053D1;
   border-radius: 3px;
   background-color: #0D0D0D;
   color: white;
-  text-align: center; }
+  text-align: center;
+  box-shadow: 10px 10px 5px 1px #403e3f;
+  -webkit-box-shadow: 10px 10px 5px 1px #403e3f;
+  -moz-box-shadow: 10px 10px 5px 1px #403e3f; }
   .pop-modal h3 {
+    text-transform: uppercase;
+    font-family: 'Architects Daughter', cursive;
     color: #3053D1; }
   .pop-modal #modal-operations button {
     padding: 0; }

@@ -158,14 +158,19 @@ body{
 
 
 .pop-modal{
-    border: solid black;
+    border: solid 1px $color2;
     border-radius: 3px ;
     background-color: $color1;
     color: white;
     text-align: center;
 
+    box-shadow: 10px 10px 5px 1px rgba(64,62,63,1);
+    -webkit-box-shadow: 10px 10px 5px 1px rgba(64,62,63,1);
+    -moz-box-shadow: 10px 10px 5px 1px rgba(64,62,63,1);
+
     h3{
-        // font-family: 'Architects Daughter', cursive;
+        text-transform: uppercase;
+        font-family: 'Architects Daughter', cursive;
         color: $color2;
     }
 

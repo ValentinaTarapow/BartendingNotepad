@@ -156,46 +156,46 @@ $("#btn-favorites").click(function(){
 });
 
 //------new recipe button event------
-$("#btn-new-recipe").click(function(){
-    // this function pushes a new empty recipe into the users array and creates a card
-    const newCocktail = new Cocktail();
-    const index = newCocktail.getId();
-    myUser.recipes[index] = newCocktail;
-    
-    updateStorage();
-    createCard(newCocktail,index);
-});
+    $("#btn-new-recipe").click(function(){
+        // this function pushes a new empty recipe into the users array and creates a card
+        const newCocktail = new Cocktail();
+        const index = newCocktail.getId();
+        myUser.recipes[index] = newCocktail;
+        
+        updateStorage();
+        createCard(newCocktail,index);
+    });
 
 //------delete all recipes------
-$("#btn-delete-all").click(function(){
+    $("#btn-delete-all").click(function(){
 
-    $("#modal-delete-confirmation").addClass("show");
+        $("#modal-delete-confirmation").addClass("show");
 
-    $("#btn-delete-all-cancel").click(function(){
-        $("#modal-delete-confirmation").removeClass("show");
+        $("#btn-delete-all-cancel").click(function(){
+            $("#modal-delete-confirmation").removeClass("show");
+        });
+
+        $("#btn-delete-all-accept").click(function(){
+            $("#modal-delete-confirmation").removeClass("show");
+
+            //clear the grid
+            let gridRecipes = document.getElementById("recipes-grid");
+            gridRecipes.innerHTML = "";
+
+            //restart the instance counter
+            Cocktail._counter = 0;
+            Ingredient._counter = 0;
+
+            //empty the array    
+            while(myUser.recipes.length > 0){
+                myUser.recipes.pop();
+            }
+
+            updateStorage();
+        });
     });
 
-    $("#btn-delete-all-accept").click(function(){
-        $("#modal-delete-confirmation").removeClass("show");
-
-        //clear the grid
-        let gridRecipes = document.getElementById("recipes-grid");
-        gridRecipes.innerHTML = "";
-
-        //restart the instance counter
-        Cocktail._counter = 0;
-        Ingredient._counter = 0;
-
-        //empty the array    
-        while(myUser.recipes.length > 0){
-            myUser.recipes.pop();
-        }
-
-        updateStorage();
-    });
-});
-
-    //------edit-user-name button------
+//------edit-user-name button------
     //user creation
     let myUser = new User();
 
@@ -236,42 +236,45 @@ $("#btn-delete-all").click(function(){
     $(document).ready(function(){
         storagedUser = JSON.parse(localStorage.getItem("_user"));
 
-        if ( (storagedUser.userName == null) || (storagedUser.userName == "") ) {
-            $("#greeting-user").html("");
-        }
-        else{
-            storagedUser = JSON.parse(localStorage.getItem("_user"));
+        if(storagedUser){
             recipeCounter = parseInt(localStorage.getItem("_recipeCounter"));
             ingCounter = parseInt(localStorage.getItem("_ingCounter"));
 
-            myUser.userName = storagedUser.userName;
-            myUser.recipes = storagedUser.recipes;  
-
             myUser = storagedUser;
 
-            $("#greeting-user").html(
+            if((storagedUser.userName != null) && (storagedUser.userName != "")){
+                $("#greeting-user").html(
                 `
                     Welcome back, <span class="text-danger"> ${storagedUser.userName}</span>!
                 `);
+            }else{
+                $("#greeting-user").html("");
+            }
+            
 
-                
             Cocktail._counter = recipeCounter;
             Ingredient._counter = ingCounter;
         
-            let recipesLenght = storagedUser.recipes.length;
+            let recipesLength = storagedUser.recipes.length;
 
-        
-            // si hay recetas
-            if(recipesLenght >= 1){
-                for(let i = 1; i < recipesLenght; i++){
-                    let storageRecipe = storagedUser.recipes[i];
+            // if there is any recipe
+            if(recipesLength >= 1){
+
+                //filters null/empty
+                let cleanArray = storagedUser.recipes.filter(Boolean);
+                let cleanLength = cleanArray.length;
+
+                for(let i = 0; i < cleanLength; i++){
+                    let storageRecipe = cleanArray[i];
                     console.log(storageRecipe);
                     let storageIndex = storageRecipe._id;
                     createCard(storageRecipe,storageIndex);
                 }
             }
         }
-
+        else{
+                $("#greeting-user").html("");
+        }
     });
 
 
@@ -302,18 +305,30 @@ $("#btn-delete-all").click(function(){
                 </div>
             </div>
             `);
+
+
+        // checks if there is any ingredient, if its equal or greater than 1, they came from storage
+        let ingrLength = recipe.ingredients.length;
+        if(ingrLength >= 1){
+
+            //filters null/empty
+            let cleanArray = storagedUser.recipes[recipe._id].ingredients.filter(Boolean);
+            let cleanLength = cleanArray.length;
+
+            console.log(cleanArray);
+
+            for(let i = 0; i < cleanLength; i++){
+                let storageIngr = cleanArray[i];
+                console.log(storageIngr);
+                let storageIndex = storageIngr._id;
             
-    
-        //CHEQUEAR
-        if(recipe.ingredients.length >= 1){
-            for(let i = 1; i < (recipe.ingredients.length) ; i++){
-            $(`#listIngredients-${recipe._id}`).append(`
-                <li id="item-ingredient-${recipe._id}-${recipe.ingredients[i]._id}" class="list-ingr-item d-flex flex-row justify-content-start">
-                    <button id="btn-delete-ingredient-${recipe._id}-${recipe.ingredients[i]._id}" class="bg-danger d-inline me-1 btn-delete-ingredient">
+                $(`#listIngredients-${recipe._id}`).append(`
+                <li id="item-ingredient-${recipe._id}-${storageIndex}" class="list-ingr-item d-flex flex-row justify-content-start">
+                    <button id="btn-delete-ingredient-${recipe._id}-${storageIndex}" class="bg-danger d-inline me-1 btn-delete-ingredient">
                         <i class="fa fa-times" aria-hidden="true" title="Delete ingredient"></i>
                     </button> 
 
-                    ${recipe.ingredients[i].ingredientName} (${recipe.ingredients[i].alcoholContent}%Alc./Vol.) - ${recipe.ingredients[i].amount} ${recipe.ingredients[i].measure}
+                    ${storageIngr.ingredientName} (${storageIngr.alcoholContent}%Alc./Vol.) - ${storageIngr.amount} ${storageIngr.measure}
                 </li> 
             `);
             }
@@ -397,6 +412,7 @@ $("#btn-delete-all").click(function(){
                     newIngredient.measure = userIngredientMeasure;
                     newIngredient.alcoholContent = userIngredientAlcohol;
     
+                    console.log(index);
                     myUser.recipes[IndexNewIngredient].ingredients[index] = newIngredient;
                     
                     $(`#listIngredients-${IndexNewIngredient}`).append(`
@@ -450,7 +466,7 @@ $("#btn-delete-all").click(function(){
         storagedUser = localStorage.getItem("_user");
 
         localStorage.setItem('_recipeCounter', Cocktail._counter);
-        localStorage.setItem('_ingCounter',Cocktail._counter);
+        localStorage.setItem('_ingCounter',Ingredient._counter);
         recipeCounter = localStorage.getItem("_recipeCounter");
         ingCounter = localStorage.getItem("_ingCounter");
     };

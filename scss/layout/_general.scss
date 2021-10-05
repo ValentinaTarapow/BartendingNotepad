@@ -39,8 +39,6 @@ body{
 }
 
 #recipes-main{
-
-    
     button{
         border: $borde-basic;
         font-family: 'Rajdhani', sans-serif;
@@ -55,8 +53,6 @@ body{
     grid-template-areas: "a a a";
     grid-gap: 10px;
     // grid-auto-rows: 100px;
-
-
 
     .card-recipe{
         border-radius: 4px;

@@ -29,7 +29,7 @@
 
 <body id="recipes-page">
     <header>
-
+    
         <nav class="d-flex justify-content-between align-items-center">
             <div class="d-flex justify-content-around align-items-center ms-3">
                 <a title="brand" id="brand" href="#">Bartending Notepad</a>
@@ -37,36 +37,39 @@
             </div>
 
             <div class="dropdown me-3"> 
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-user" aria-hidden="true"></i>
                 </button>
-                <ul class="dropdown-menu text-align-center text-center d-row p-3 " aria-labelledby="dropdownMenuButton1">
+                <ul class="dropdown-menu text-align-center text-center d-row p-3 " aria-labelledby="dropdownMenu">
                     <li id="greeting-user"></li>
                     <li><button id="edit-user-name" class="btn"><i class="fa fa-pencil" aria-hidden="true">Edit name</i></button></li>
                 </ul>
             </div>
         </nav>
-
-        <div id="modal-info" class="pop-up">
-            <div id="modal-info-card" class="pop-modal pop-up-wrap w-50 section-divided">
-                <h3 class="m-2">¿What is "Bartending Notepad"?</h3>
-                <p>As bartenders we know that sometimes the process of creating new cocktails can be a little bit tedious, it gets even worse at the moment of remembering them.</p>
-                <p>That is why we created Bartending Notepad as a place where we facilitate the authorship of drinks...you can also use it as a memory helper, we will not tell anyone about it.</p>
-                <p>You will be able to select the type of cocktail, its ingredients, measurements and name your recipes so that you can save them and find everything at the same place.</p>     
-                <button id="btn-close-info" class="btn btn-close-white"><i class="fa fa-close" aria-hidden="true"></i></button>
-            </div>
-        </div>
-
-        <div id="modal-user" class="pop-up">
-            <form id="modal-user-card" class="pop-modal pop-up-wrap w-25">
-                <h3 class="m-2">Edit user name</h3>
-                <input type="text" name="userName" id="input-user" class="w-75 m-2" placeholder="Insert user name">
-                <div class="d-flex flex-row justify-content-around" id="modal-operations">
-                    <button type="reset" class="btn bg-danger p-3 m-2" id="btn-cancel-user"> Cancel </button>
-                    <button type="button" class="btn bg-success p-3 m-2" id="btn-save-user"> Save </button>
+    
+        <section class="modals-nav">
+            <div id="modal-info" class="pop-up">
+                <div id="modal-info-card" class="pop-modal pop-up-wrap w-50 section-divided">
+                    <h3 class="m-2">¿What is "Bartending Notepad"?</h3>
+                    <p>As bartenders we know that sometimes the process of creating new cocktails can be a little bit tedious, it gets even worse at the moment of remembering them.</p>
+                    <p>That is why we created Bartending Notepad as a place where we facilitate the authorship of drinks...you can also use it as a memory helper, we will not tell anyone about it.</p>
+                    <p>You will be able to select the type of cocktail, its ingredients, measurements and name your recipes so that you can save them and find everything at the same place.</p>     
+                    <button id="btn-close-info" class="btn btn-close-white"><i class="fa fa-close" aria-hidden="true"></i></button>
                 </div>
-            </form>
-        </div>
+            </div>
+    
+            <div id="modal-user" class="pop-up">
+                <form id="modal-user-card" class="pop-modal pop-up-wrap w-25">
+                    <h3 class="m-2">Edit user name</h3>
+                    <input type="text" name="userName" id="input-user" class="w-75 m-2" placeholder="Insert user name">
+                    <div class="d-flex flex-row justify-content-around" id="modal-operations">
+                        <button type="reset" class="btn bg-danger p-3 m-2" id="btn-cancel-user"> Cancel </button>
+                        <button type="button" class="btn bg-success p-3 m-2" id="btn-save-user"> Save </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    
     </header>
 
 
@@ -86,7 +89,9 @@
                     <button class="btn bg-danger p-3" id="btn-delete-all"><i class="fa fa-trash" aria-hidden="true"> Delete all</i></button>
                 </div>
             </div>
+        </section>
 
+        <section class="modals-main">
             <div id="modal-favorites" class="pop-up">
                 <div id="pop-carousel" class="pop-modal pop-up-wrap w-50">
                     <div id="carouselExampleIndicators" class="carousel carousel-dark slide h-100" data-bs-ride="carousel">
@@ -113,10 +118,8 @@
                 </div>
             </div>
 
-
-
             <div id="modal-delete-confirmation" class="pop-up">
-                <div class="pop-modal pop-up-wrap w-25">
+                <div id="delete-confirmation" class="pop-modal pop-up-wrap w-25">
                     <h3 class="m-2">⚠️  Are you sure you want to delete all recipes?  ⚠️</h3>
                     <div class="d-flex flex-row justify-content-around" id="modal-operations">
                         <button type="button" class="btn bg-danger p-3 m-2" id="btn-delete-all-cancel"> Cancel </button>
@@ -162,26 +165,25 @@
                     </div>
                 </form>
             </div>
-
-            <div id="alertZone">
-                <div class="alert alert-success alert-dismissible" id="alert-added">
-                    <b>Congrats!</b> New recipe added down below ⬇
-                    <button type="button" class="btn-close" id="btn-close-alert" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-
-                <div class="alert alert-danger alert-dismissible" id="alert-deleted">
-                    <b>Recipe deleted succesfully</b>
-                    <button type="button" class="btn-close" id="btn-close-alert" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            </div>
-            
-            <div id="recipes-grid"></div>
-
         </section>
+
+        <section id="alertZone">
+            <div class="alert alert-success alert-dismissible" id="alert-added">
+                <b>Congrats!</b> New recipe added down below ⬇
+                <button type="button" class="btn-close" id="btn-close-alert" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <div class="alert alert-danger alert-dismissible" id="alert-deleted">
+                <b>Recipe deleted succesfully</b>
+                <button type="button" class="btn-close" id="btn-close-alert" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </section>
+
+        <section id="recipes-grid"></section>
     </main>
 
     <footer>
-        <p>Powered by Valentina Tarapow</p>
+        <p>Powered by <a href="http://www.linkedin.com/in/valentina-tarapow/">Valentina Tarapow</a></p>
     </footer>
 
     <!-- SCRIPTS -->

@@ -52,7 +52,7 @@ class Ingredient{
 }
 // --------------------------------------------------------------------------
 
-//information modal event
+//------information modal event------
 $("#btn-info").click(function(){
     //shows the web information
     $("#modal-info").addClass("show");
@@ -61,15 +61,25 @@ $("#btn-info").click(function(){
         //hides the web information
         $("#modal-info").removeClass("show");
     });
+
+    //close it by clicking on the outside 
+    $('#modal-info').on("click", (e) => {
+        var target = e.target || e.srcElement || e.currentTarget;
+        if (document.getElementById('pop-info').contains(target)){
+        } else{
+            $("#modal-info").removeClass("show");
+        }
+    });
 });
 
-//favorites modal event
+//------favorites modal event------
 favClickCounter = 0;
 $("#btn-favorites").click(function(){
     // AJAX
     favClickCounter++;
     $("#modal-favorites").addClass("show");
     
+    //close it by clicking on the outside 
     $('#modal-favorites').on("click", (e) => {
         var target = e.target || e.srcElement || e.currentTarget;
         if (document.getElementById('pop-carousel').contains(target)){
@@ -86,8 +96,11 @@ $("#btn-favorites").click(function(){
             if (status === "success") {
                 let myData = data.staticRecipes;
                 let favoriteCounter = 0;
+                let slide = favoriteCounter + 1;
+                
                 for (const recipe of myData){
                     
+                    //creating dynamic slides - they are static recipe so it cannot be edited
                     $(`.carousel-inner`).append(
                         `
                         <div id="favorite-${favoriteCounter}" class="carousel-item h-100">
@@ -101,6 +114,18 @@ $("#btn-favorites").click(function(){
                         </div>
                             `
                     );
+
+                    //creating dynamic indicators
+                    $(`#carousel-indicators`).append(
+                        `
+                            <button type="button" id="indicator-${favoriteCounter}" class="" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${favoriteCounter}" aria-label="Slide ${slide}"></button>
+                        `
+                    )
+
+                    //starts the active indicator
+                    if(favoriteCounter == 0){
+                        $("#indicator-0").addClass("active");
+                    }
                     
                     for(const ingredient of recipe.ingredients){
                         $(`#favorite-${favoriteCounter}-ingredients`).append(
@@ -111,14 +136,18 @@ $("#btn-favorites").click(function(){
                             `
                         );
                     }
+
+                    //starts the active slide
                     if(favoriteCounter == 0){
                         $("#favorite-0").addClass("active");
                     }
+                
                     favoriteCounter++;
                 }
 
             }
             else{
+                //could not load the json
                 alert("ERROR");
             }
         });
@@ -126,19 +155,18 @@ $("#btn-favorites").click(function(){
 
 });
 
-//new recipe button event
+//------new recipe button event------
 $("#btn-new-recipe").click(function(){
     // this function pushes a new empty recipe into the users array and creates a card
     const newCocktail = new Cocktail();
     const index = newCocktail.getId();
     myUser.recipes[index] = newCocktail;
-    // myUser.recipes[0] += 1;
     
     updateStorage();
     createCard(newCocktail,index);
 });
 
-// delete all recipes
+//------delete all recipes------
 $("#btn-delete-all").click(function(){
 
     $("#modal-delete-confirmation").addClass("show");
@@ -158,10 +186,6 @@ $("#btn-delete-all").click(function(){
         Cocktail._counter = 0;
         Ingredient._counter = 0;
 
-        // let cleanUser = JSON.parse(localStorage.getItem("_user"));
-        // if (cleanUser.recipes) delete cleanUser.recipes
-        // localStorage.setItem('_user', JSON.stringify(cleanUser));
-
         //empty the array    
         while(myUser.recipes.length > 0){
             myUser.recipes.pop();
@@ -171,7 +195,7 @@ $("#btn-delete-all").click(function(){
     });
 });
 
-    //  edit-user-name button
+    //------edit-user-name button------
     //user creation
     let myUser = new User();
 
@@ -247,56 +271,11 @@ $("#btn-delete-all").click(function(){
                 }
             }
         }
-            
-            
 
     });
 
-    
-
-
 
 //------------------------------------------------
-    //UPDATE STORAGE
-    function updateStorage() {
-        localStorage.setItem('_user', JSON.stringify(myUser));
-        storagedUser = localStorage.getItem("_user");
-
-        localStorage.setItem('_recipeCounter', Cocktail._counter);
-        localStorage.setItem('_ingCounter',Cocktail._counter);
-        recipeCounter = localStorage.getItem("_recipeCounter");
-        ingCounter = localStorage.getItem("_ingCounter");
-    };
-
-    // function showError(input, message) {
-    //     const formControl = input.parentElement;
-    //     formControl.className = 'form-control error';
-    //     const small = formControl.querySelector('small');
-    //     small.innerText = message;
-    // }
-
-    // //show success colour
-    // function showSucces(input) {
-    //     const formControl = input.parentElement;
-    //     formControl.className = 'form-control success';
-    // }
-
-    // function EmptyNullEvaluator(data){
-    //     //this function evaluates if data is null or filled with spaces
-    //     const length = data.length;
-    //     let count = 0;
-
-    //     for(let i = 0; i < length; i++){
-    //         let ascii = data.charCodeAt(i);
-
-    //         if ((ascii == 00) || (ascii == 32)){
-    //             count++;
-    //         }
-    //     }
-
-    //     //if every character is null/space returns true and the entry is not allowed to use
-    //     return (count === length);
-    // }
 
     //CREATE CARD FUNCTION
     function createCard(recipe , index){
@@ -326,10 +305,6 @@ $("#btn-delete-all").click(function(){
             
     
         //CHEQUEAR
-
-        // alert("entro");
-        // console.log(recipe);
-
         if(recipe.ingredients.length >= 1){
             for(let i = 1; i < (recipe.ingredients.length) ; i++){
             $(`#listIngredients-${recipe._id}`).append(`
@@ -393,7 +368,6 @@ $("#btn-delete-all").click(function(){
                 //this function erases the card where this event is called and empties the element from the recipes array
                 $(`#recipe-${index}`).remove()
                 delete myUser.recipes[index];
-                // myUser.recipes[0] -= 1;
                 updateStorage();
                 $("#alert-deleted").fadeIn(300).delay(1500).fadeOut(400);
             });
@@ -468,4 +442,15 @@ $("#btn-delete-all").click(function(){
                 });
             });
         // ------------------------------------------
-    }
+    };
+
+    //UPDATE STORAGE
+    function updateStorage() {
+        localStorage.setItem('_user', JSON.stringify(myUser));
+        storagedUser = localStorage.getItem("_user");
+
+        localStorage.setItem('_recipeCounter', Cocktail._counter);
+        localStorage.setItem('_ingCounter',Cocktail._counter);
+        recipeCounter = localStorage.getItem("_recipeCounter");
+        ingCounter = localStorage.getItem("_ingCounter");
+    };

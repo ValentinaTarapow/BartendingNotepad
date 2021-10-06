@@ -1,6 +1,7 @@
 let storagedUser;
 let ingCounter;
 let recipeCounter;
+let recommendClickCounter = 0;
 const URLJSON = "./data/data.json";
 // ------------ CLASSES DEFINITION ------------
 
@@ -13,6 +14,7 @@ class User{
 
 class Cocktail{
     constructor(){
+        //instance counter
         this._id = Cocktail.counter;
         this.cocktailName = "NewCocktail";
         this.ingredients = [];
@@ -30,6 +32,7 @@ class Cocktail{
 
 class Ingredient{
     constructor(){
+        //instance counter
         this._id = Ingredient.counter;
         this.ingredientName = "";
         this.measure = "";
@@ -50,7 +53,9 @@ class Ingredient{
         return(this.ingredientName + " (" + this.alcoholContent + " %Alc./Vol)" + " - " + this.amount + this.measure);
     }
 }
-// --------------------------------------------------------------------------
+// -----------------------------------------------
+
+
 
 //------information modal event------
 $("#btn-info").click(function(){
@@ -72,43 +77,42 @@ $("#btn-info").click(function(){
     });
 });
 
-//------favorites modal event------
-favClickCounter = 0;
-$("#btn-favorites").click(function(){
-    // AJAX
-    favClickCounter++;
-    $("#modal-favorites").addClass("show");
+//---recommendations modal event with AJAX---
+$("#btn-recommended").click(function(){
+    //counts how many times this button was clicked
+    recommendClickCounter++;
+    $("#modal-recommended").addClass("show");
     
     //close it by clicking on the outside 
-    $('#modal-favorites').on("click", (e) => {
+    $('#modal-recommended').on("click", (e) => {
         var target = e.target || e.srcElement || e.currentTarget;
         if (document.getElementById('pop-carousel').contains(target)){
         } else{
-            $("#modal-favorites").removeClass("show");
+            $("#modal-recommended").removeClass("show");
         }
     });
 
-    //just loads it one time 
-    if(favClickCounter==1){
+    //just loads it the first time
+    if(recommendClickCounter==1){
         $.getJSON(URLJSON, function (data, status) {
             
             
             if (status === "success") {
                 let myData = data.staticRecipes;
-                let favoriteCounter = 0;
-                let slide = favoriteCounter + 1;
+                let recommendedCounter = 0;
+                let slide = recommendedCounter + 1;
                 
                 for (const recipe of myData){
                     
-                    //creating dynamic slides - they are static recipe so it cannot be edited
+                    //creating dynamic slides - they are static recipes so they cannot be edited
                     $(`.carousel-inner`).append(
                         `
-                        <div id="favorite-${favoriteCounter}" class="carousel-item h-100">
+                        <div id="recommendation-${recommendedCounter}" class="carousel-item h-100">
                             <div class="card text-black bg-warning mb-3 d-block h-100">
-                                    <div class="card-header" id="favorite-title">${recipe.cocktailName}</div>
+                                    <div class="card-header" id="recommendation-title">${recipe.cocktailName}</div>
                                     <div class="card-body h-100">
                                         <h5 class="card-title">Ingredients</h5>
-                                        <ul class="card-text list-unstyled h-100" id="favorite-${favoriteCounter}-ingredients"></ul>
+                                        <ul class="card-text list-unstyled h-100" id="recommendation-${recommendedCounter}-ingredients"></ul>
                                     </div>
                             </div>
                         </div>
@@ -118,17 +122,17 @@ $("#btn-favorites").click(function(){
                     //creating dynamic indicators
                     $(`#carousel-indicators`).append(
                         `
-                            <button type="button" id="indicator-${favoriteCounter}" class="" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${favoriteCounter}" aria-label="Slide ${slide}"></button>
+                            <button type="button" id="indicator-${recommendedCounter}" class="" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${recommendedCounter}" aria-label="Slide ${slide}"></button>
                         `
                     )
 
                     //starts the active indicator
-                    if(favoriteCounter == 0){
+                    if(recommendedCounter == 0){
                         $("#indicator-0").addClass("active");
                     }
                     
                     for(const ingredient of recipe.ingredients){
-                        $(`#favorite-${favoriteCounter}-ingredients`).append(
+                        $(`#recommendation-${recommendedCounter}-ingredients`).append(
                             `
                                 <li>
                                     ${ingredient.ingredientName} (${ingredient.alcoholContent} %Alc./Vol) - ${ingredient.amount} ${ingredient.measure}
@@ -138,11 +142,11 @@ $("#btn-favorites").click(function(){
                     }
 
                     //starts the active slide
-                    if(favoriteCounter == 0){
-                        $("#favorite-0").addClass("active");
+                    if(recommendedCounter == 0){
+                        $("#recommendation-0").addClass("active");
                     }
                 
-                    favoriteCounter++;
+                    recommendedCounter++;
                 }
 
             }
@@ -155,9 +159,9 @@ $("#btn-favorites").click(function(){
 
 });
 
-//------new recipe button event------
+//new recipe button event: pushes a new empty recipe into the users array and creates a card
     $("#btn-new-recipe").click(function(){
-        // this function pushes a new empty recipe into the users array and creates a card
+        
         const newCocktail = new Cocktail();
         const index = newCocktail.getId();
         myUser.recipes[index] = newCocktail;
@@ -264,6 +268,7 @@ $("#btn-favorites").click(function(){
                 let cleanArray = storagedUser.recipes.filter(Boolean);
                 let cleanLength = cleanArray.length;
 
+                //shows the cleaned array
                 for(let i = 0; i < cleanLength; i++){
                     let storageRecipe = cleanArray[i];
                     console.log(storageRecipe);
@@ -315,8 +320,7 @@ $("#btn-favorites").click(function(){
             let cleanArray = storagedUser.recipes[recipe._id].ingredients.filter(Boolean);
             let cleanLength = cleanArray.length;
 
-            console.log(cleanArray);
-
+            //shows the cleaned array
             for(let i = 0; i < cleanLength; i++){
                 let storageIngr = cleanArray[i];
                 console.log(storageIngr);
@@ -332,9 +336,10 @@ $("#btn-favorites").click(function(){
                 </li> 
             `);
 
+            //Delete ingredient event: binding this event when the ingredient comes from storage
             $(`#btn-delete-ingredient-${recipe._id}-${storageIndex}`).click(function(){
-                //this function erases the ingredient where this event is called and empties the element from the ingredients array
                 const IdDeleteIngredient = $(this).attr('id');
+                //extracts the digits from the id where the event is called
                 const IndexDeleteIngredient = IdDeleteIngredient.match(/\d+/g).map(Number)
 
                 //extracts the first number correspondent to the recipe/card
@@ -346,7 +351,6 @@ $("#btn-favorites").click(function(){
                 delete myUser.recipes[IndexRecipe].ingredients[IndexIngredient];
                 $(`#item-ingredient-${IndexRecipe}-${IndexIngredient}`).remove();
 
-                // $(`##btn-delete-ingredient-${IndexNewIngredient}-${index}`).unbind();
                 updateStorage();        
             });
             }
@@ -360,6 +364,7 @@ $("#btn-favorites").click(function(){
             const IdEditRecipeName = $(this).attr('id');
             const IndexEditRecipeName = IdEditRecipeName.match(/\d+/).map(Number);
     
+            //------Save recipe name event------
             $(`#btn-save-recipe-name`).click(function(){
                 let userEntry = $("input[name='recipeName']").val();
                 
@@ -378,6 +383,7 @@ $("#btn-favorites").click(function(){
                 $("#btn-save-recipe-name").unbind()
             });
     
+            //------Cancel change recipe name------
             $("#btn-cancel-recipe-name").click(function(){
                 $("#modal-recipe-name").removeClass("show");
                 $("#btn-save-recipe-name").unbind()
@@ -396,9 +402,8 @@ $("#btn-favorites").click(function(){
                 </button> 
                 `);
     
-            // delete recipe
+            // delete recipe: erases the card where this event is called and empties the element from the recipes array
             $(`#btn-delete-recipe-${index}`).click(function(e){
-                //this function erases the card where this event is called and empties the element from the recipes array
                 //it does not POP it from the array to avoid altering it and the ids
                 $(`#recipe-${index}`).remove()
                 delete myUser.recipes[index];
@@ -421,11 +426,13 @@ $("#btn-favorites").click(function(){
                     const newIngredient = new Ingredient();
                     const index = newIngredient.getId();
     
+                    //select values from the inputs
                     let userIngredientName = $("input[name='input-ing-name']").val();
                     let userIngredientAmount = $("input[name='input-ing-amount']").val();
                     let userIngredientMeasure = $("#input-ing-measure").val();
                     let userIngredientAlcohol = $("input[name='input-ing-alcohol']").val();
     
+                    //save the values in the ingredient
                     newIngredient.ingredientName = userIngredientName;
                     newIngredient.amount = userIngredientAmount;
                     newIngredient.measure = userIngredientMeasure;
@@ -445,10 +452,11 @@ $("#btn-favorites").click(function(){
 
                     updateStorage();
     
-                    //delete ingredient
+                    //delete ingredient: erases the ingredient where this event is called and empties the element from the ingredients array
                     $(`#btn-delete-ingredient-${IndexNewIngredient}-${index}`).click(function(){
-                        //this function erases the ingredient where this event is called and empties the element from the ingredients array
+                        
                         const IdDeleteIngredient = $(this).attr('id');
+                        //extracts the digits from the id where the event is called
                         const IndexDeleteIngredient = IdDeleteIngredient.match(/\d+/g).map(Number)
     
                         //extracts the first number correspondent to the recipe/card
@@ -460,7 +468,6 @@ $("#btn-favorites").click(function(){
                         delete myUser.recipes[IndexRecipe].ingredients[IndexIngredient];
                         $(`#item-ingredient-${IndexRecipe}-${IndexIngredient}`).remove();
 
-                        // $(`##btn-delete-ingredient-${IndexNewIngredient}-${index}`).unbind();
                         updateStorage();        
                     });
     

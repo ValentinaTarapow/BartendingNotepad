@@ -48,6 +48,7 @@
         </nav>
     
         <section class="modals-nav">
+            <!-- Web information modal -->
             <div id="modal-info" class="pop-up">
                 <div id="pop-info" class="pop-modal pop-up-wrap w-50 section-divided">
                     <h3 class="m-2">¿What is "Bartending Notepad"?</h3>
@@ -58,6 +59,7 @@
                 </div>
             </div>
     
+            <!-- Edit user name modal -->
             <div id="modal-user" class="pop-up">
                 <form id="pop-user" class="pop-modal pop-up-wrap w-25 p-4">
                     <h3 class="m-2">Edit user name</h3>
@@ -78,7 +80,7 @@
         <section>
             <div class="operations w-100 mt-3 d-flex justify-content-evenly">
                 <div class="non-dangerous d-flex flex-row justify-content-between">
-                    <button class="btn btn-warning me-2" id="btn-favorites" title="Our favorites"><i class="fa fa-star" aria-hidden="true"></i></button>
+                    <button class="btn btn-warning me-2" id="btn-recommended" title="Our recommendations"><i class="fa fa-star" aria-hidden="true"></i></button>
                     <button class="btn bg-success p-3" id="btn-new-recipe"><i class="fa fa-plus" aria-hidden="true"> New recipe</i></button>
                 </div>
                 <div class="dangerous">
@@ -89,7 +91,8 @@
 
         <section class="modals-main">
         
-            <div id="modal-favorites" class="pop-up">
+            <!-- Recommended recipes modal -->
+            <div id="modal-recommended" class="pop-up">
                 <div id="pop-carousel" class="pop-modal pop-up-wrap w-50">
                     <div id="carouselExampleIndicators" class="carousel carousel-dark slide h-100" data-bs-ride="carousel">
                         <div class="carousel-indicators" id="carousel-indicators"></div>
@@ -108,6 +111,7 @@
                 </div>
             </div>
 
+            <!-- Delete all recipes confirmation modal -->
             <div id="modal-delete-confirmation" class="pop-up">
                 <div id="pop-delete-confirmation" class="pop-modal pop-up-wrap w-25 p-4">
                     <h4 class="m-2" id="pop-up-title">⚠️ DELETE ALL RECIPES ⚠️</h4>
@@ -118,6 +122,7 @@
                 </div>
             </div>
 
+            <!-- Change recipe name modal -->
             <div id="modal-recipe-name" class="pop-up">
                 <form id="pop-recipe-name" class="pop-modal pop-up-wrap w-25 p-4">
                     <h3 class="m-2">Edit recipe name</h3>
@@ -129,6 +134,7 @@
                 </form>
             </div>
 
+            <!-- Entering a new ingredient modal -->
             <div id="modal-ingredient" class="pop-up">
                 <div id="pop-new-ingredient" class="pop-modal pop-up-wrap section-divided">
                     <h3 class="">New Ingredient</h3>
@@ -177,6 +183,7 @@
             </div>
         </section>
 
+        <!-- this is where all the user recipes are shown -->
         <div class="d-flex justify-content-center">
             <section id="recipes-grid" class="text-center"></section>
         </div>
@@ -186,7 +193,7 @@
         <p>Powered by <a href="http://www.linkedin.com/in/valentina-tarapow/">Valentina Tarapow</a></p>
     </footer>
 
-    <!-- SCRIPTS -->
+    <!-- ----------SCRIPTS---------- -->
     <!-- BOOTSRAP -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
         integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous">

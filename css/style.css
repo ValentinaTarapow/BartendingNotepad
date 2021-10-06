@@ -54,6 +54,7 @@ body {
     #recipes-grid .card-recipe h2 {
       font-size: 2rem;
       color: black;
+      word-break: break-word;
       text-align: center; }
     #recipes-grid .card-recipe h3 {
       font-size: 1.5rem;

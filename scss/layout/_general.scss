@@ -52,7 +52,6 @@ body{
     display: grid;
     grid-template-areas: "a a a";
     grid-gap: 10px;
-    // grid-auto-rows: 100px;
 
     .card-recipe{
         border-radius: 4px;
@@ -71,15 +70,14 @@ body{
         h2{
             font-size: 2rem;
             color: black;
-            // text-decoration: underline;
+            word-break: break-word;
             text-align: center;
         }
+    
         h3{
             font-size: 1.5rem;
             color: $color2;
-            // text-decoration: underline;
             font-family: 'Architects Daughter', cursive;
-
         }
 
         #card-body{

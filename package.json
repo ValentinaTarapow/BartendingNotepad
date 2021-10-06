@@ -9,7 +9,7 @@
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
 
   },
-  "author": "",
+  "author": "Valentina Tarapow",
   "license": "ISC",
   "devDependencies": {
     "node-sass": "^6.0.1",

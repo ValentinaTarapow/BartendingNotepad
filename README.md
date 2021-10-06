@@ -4,18 +4,24 @@ GitHub Pages:
 https://valentinatarapow.github.io/BartendingNotepad/
 
 <h2>How to use it?</h2>
+
+<h3>User:</h3>
 <ol>
-    <li>Click on the 👤 (user) button on the right side of the nav or you can remain anonymus</li>
+    <li>Click on the 👤 (user) button on the right side of the nav or you can stay anonymus</li>
     <li>Click on edit user name and enter your name</li>
-    <ul>
-        <li>See our recommended recipes → Press ★</li>
-        <li>Create your own recipes → Press +New recipe </li>
-        <li>Add new ingredient →  Press + inside the recipe</li>
-        <li>Delete one recipe at a time → Press 🗑️ inside the recipe </li>
-        <li>Delete all recipes at once → Press 🗑️Delete all </li>
-        <li>ℹ️ Your recipes will stay safe until you clear your browser data</li>
-    </ul>
 </ol>
+
+<h3>Recipes:</h3>
+<ul>
+    <li>See our recommended recipes → Press ★</li>
+    <li>Create your own recipes → Press +New recipe </li>
+    <li>Add new ingredient →  Press + inside the recipe</li>
+    <li>Delete one recipe at a time → Press 🗑️ inside the recipe </li>
+    <li>Delete all recipes at once → Press 🗑️Delete all </li>
+    <li>ℹ️ Your recipes will stay safe until you clear your browser data</li>
+</ul>
+
+
 
 <h1 align="center">Hi 👋, I'm Valentina</h1>
 <h3 align="center">A passionate and commited developer from Argentina</h3>

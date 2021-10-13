@@ -13,66 +13,50 @@ body {
   background-repeat: repeat-y, repeat;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.3); }
 
-.section-divided {
-  width: 50%;
-  margin: 5rem;
-  padding: 2rem;
-  text-align: center;
-  border-radius: 3px;
-  box-shadow: 10px 10px 5px 1px #403e3f;
-  -webkit-box-shadow: 10px 10px 5px 1px #403e3f;
-  -moz-box-shadow: 10px 10px 5px 1px #403e3f;
-  background-color: #1a1a1a;
-  color: #FFFFFF; }
-  .section-divided h1 {
-    margin-bottom: 1rem;
-    background-color: #3053D1;
-    text-decoration: underline; }
-
 #recipes-main button {
   border: solid #0D0D0D 2px;
   font-family: 'Rajdhani', sans-serif;
   color: black; }
 
-#recipes-grid {
+#recipes-main #recipes-grid {
   margin: 20px;
   width: 92vw;
   display: grid;
   grid-template-areas: "a a a";
   grid-gap: 10px; }
-  #recipes-grid .card-recipe {
+  #recipes-main #recipes-grid .card-recipe {
     border-radius: 4px;
     width: 30vw;
     background-color: white;
     font-size: 1rem;
     border: black 3px solid; }
-    #recipes-grid .card-recipe .recipe-title {
+    #recipes-main #recipes-grid .card-recipe .recipe-title {
       font-family: 'Architects Daughter', cursive;
       background-color: #a9b3bd;
       border-bottom: solid black;
       text-align: center; }
-    #recipes-grid .card-recipe h2 {
+    #recipes-main #recipes-grid .card-recipe h2 {
       font-size: 2rem;
       color: black;
       word-break: break-word;
       text-align: center; }
-    #recipes-grid .card-recipe h3 {
+    #recipes-main #recipes-grid .card-recipe h3 {
       font-size: 1.5rem;
-      color: #3053D1;
+      color: #1052A5;
       font-family: 'Architects Daughter', cursive; }
-    #recipes-grid .card-recipe #card-body {
+    #recipes-main #recipes-grid .card-recipe #card-body {
       font-family: 'Rajdhani', sans-serif;
       padding: 5px;
       background-color: white;
       color: black; }
-      #recipes-grid .card-recipe #card-body .recipe-data {
+      #recipes-main #recipes-grid .card-recipe #card-body .recipe-data {
         width: 100%; }
-      #recipes-grid .card-recipe #card-body .recipe-operations {
+      #recipes-main #recipes-grid .card-recipe #card-body .recipe-operations {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-content: flex-end; }
-        #recipes-grid .card-recipe #card-body .recipe-operations button {
+        #recipes-main #recipes-grid .card-recipe #card-body .recipe-operations button {
           width: auto;
           height: auto;
           text-align: center;
@@ -106,8 +90,8 @@ body {
   visibility: visible; }
 
 .pop-modal {
-  border: solid 1px #3053D1;
-  border-radius: 3px;
+  border: solid 2px;
+  border-radius: 20px;
   background-color: #0D0D0D;
   color: white;
   text-align: center;
@@ -116,10 +100,11 @@ body {
   -moz-box-shadow: 10px 10px 5px 1px #403e3f; }
   .pop-modal h3 {
     text-transform: uppercase;
-    font-family: 'Architects Daughter', cursive;
-    color: #3053D1; }
+    font-weight: bold;
+    color: #1052A5; }
   .pop-modal #modal-operations button {
-    padding: 0; }
+    padding: 10px !important;
+    font-weight: bold; }
 
 #btn-info {
   cursor: pointer; }
@@ -147,13 +132,13 @@ body {
   text-align: left; }
 
 #brand {
-  color: #3053D1;
+  color: #1052A5;
   font-family: 'Architects Daughter', cursive;
   font-weight: bold;
   font-size: 2.2rem; }
 
 #dropdownMenu {
-  background-color: #3053D1; }
+  background-color: #1052A5; }
   #dropdownMenu i {
     color: white; }
 
@@ -164,7 +149,7 @@ nav {
   nav #btn-info {
     margin-left: 10px; }
     nav #btn-info:hover {
-      border-bottom: 2px solid #3053D1; }
+      border-bottom: 2px solid #1052A5; }
 
 footer {
   background-color: #0D0D0D;
@@ -181,4 +166,45 @@ footer {
     text-decoration: none;
     color: #a6a4a5; }
     footer a:hover {
-      color: #3053D1 !important; }
+      color: #1052A5 !important; }
+
+/*iPhone4 ----------- */
+@media only screen and (max-width: 319px) {
+  #recipes-grid {
+    grid-template-areas: "a"; }
+    #recipes-grid .card-recipe {
+      width: 85vw; }
+  #brand {
+    font-size: 1rem; }
+  .operations #btn-new-recipe, .operations #btn-delete-all, .operations #btn-recommended {
+    padding: 6px; } }
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  #recipes-grid {
+    grid-template-areas: "a"; }
+    #recipes-grid .card-recipe {
+      width: 85vw; }
+  #brand {
+    font-size: 1rem; } }
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  #recipes-grid {
+    grid-template-areas: "a"; }
+    #recipes-grid .card-recipe {
+      width: 85vw; } }
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #recipes-grid {
+    grid-template-areas: "a"; }
+    #recipes-grid .card-recipe {
+      width: 85vw; } }
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1224px) {
+  /* Styles */ }
+
+/* Large screens ----------- */
+@media only screen and (min-width: 1824px) {
+  /* Styles */ }

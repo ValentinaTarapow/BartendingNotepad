@@ -16,27 +16,26 @@ body{
     background-size: 36px 18px, 36px 18px;
     background-repeat: repeat-y, repeat;
     box-shadow:0 0 1px rgba(0, 0, 0, 0.3);
-
 }
 
-.section-divided{
-    width: 50%;
-    margin: 5rem;
-    padding: 2rem;
-    text-align: center;
+// .section-divided{
+//     width: 50%;
+//     margin: 5rem;
+//     padding: 2rem;
+//     text-align: center;
     
-    border-radius: 3px;
-    box-shadow: 10px 10px 5px 1px rgba(64,62,63,1);
-    -webkit-box-shadow: 10px 10px 5px 1px rgba(64,62,63,1);
-    -moz-box-shadow: 10px 10px 5px 1px rgba(64,62,63,1);
-    background-color:   lighten($color1, 5%);
-    color: $color5;
-    h1{
-        margin-bottom: 1rem;
-        background-color: $color2;
-        text-decoration: underline ;
-    }
-}
+//     border-radius: 3px;
+//     box-shadow: 10px 10px 5px 1px rgba(64,62,63,1);
+//     -webkit-box-shadow: 10px 10px 5px 1px rgba(64,62,63,1);
+//     -moz-box-shadow: 10px 10px 5px 1px rgba(64,62,63,1);
+//     background-color:   lighten($color1, 5%);
+//     color: $color5;
+//     h1{
+//         margin-bottom: 1rem;
+//         background-color: $color2;
+//         text-decoration: underline ;
+//     }
+// }
 
 #recipes-main{
     button{
@@ -44,69 +43,71 @@ body{
         font-family: 'Rajdhani', sans-serif;
         color: black;
     }
-}  
 
-#recipes-grid {
-    margin: 20px;
-    width: 92vw;
-    display: grid;
-    grid-template-areas: "a a a";
-    grid-gap: 10px;
+    #recipes-grid {
+        margin: 20px;
+        width: 92vw;
+        display: grid;
+        grid-template-areas: "a a a";
+        grid-gap: 10px;
 
-    .card-recipe{
-        border-radius: 4px;
-        width: 30vw;
-        background-color: white;        
-        font-size: 1rem;
-        border: black 3px solid;
+        .card-recipe{
+            border-radius: 4px;
+            width: 30vw;
+            background-color: white;        
+            font-size: 1rem;
+            border: black 3px solid;
 
-        .recipe-title{
-            font-family: 'Architects Daughter', cursive;
-            background-color: lighten( slategrey, 20%);
-            border-bottom: solid black;
-            text-align: center;
-        }
-    
-        h2{
-            font-size: 2rem;
-            color: black;
-            word-break: break-word;
-            text-align: center;
-        }
-    
-        h3{
-            font-size: 1.5rem;
-            color: $color2;
-            font-family: 'Architects Daughter', cursive;
-        }
-
-        #card-body{
-            font-family: 'Rajdhani', sans-serif;
-
-            padding: 5px;
-            background-color: white;
-            color: black;
-
-            .recipe-data{
-                width: 100%;
+            .recipe-title{
+                font-family: 'Architects Daughter', cursive;
+                background-color: lighten( slategrey, 20%);
+                border-bottom: solid black;
+                text-align: center;
+            }
+        
+            h2{
+                font-size: 2rem;
+                color: black;
+                word-break: break-word;
+                text-align: center;
+            }
+        
+            h3{
+                font-size: 1.5rem;
+                color: $color2;
+                font-family: 'Architects Daughter', cursive;
             }
 
-            .recipe-operations{
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-content: flex-end;    
+            #card-body{
+                font-family: 'Rajdhani', sans-serif;
 
-                button{
-                    width: auto;
-                    height: auto;
-                    text-align: center;
-                    margin: 2px;
+                padding: 5px;
+                background-color: white;
+                color: black;
+
+                .recipe-data{
+                    width: 100%;
                 }
-        }
+
+                .recipe-operations{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-content: flex-end;    
+
+                    button{
+                        width: auto;
+                        height: auto;
+                        text-align: center;
+                        margin: 2px;
+                    }
+            }
+            }
         }
     }
-}
+}  
+
+
 
 #alertZone{
     #alert-added, #alert-deleted{
@@ -143,8 +144,8 @@ body{
 }
 
 .pop-modal{
-    border: solid 1px $color2;
-    border-radius: 3px ;
+    border: solid 2px;
+    border-radius: 20px ;
     background-color: $color1;
     color: white;
     text-align: center;
@@ -155,13 +156,15 @@ body{
 
     h3{
         text-transform: uppercase;
-        font-family: 'Architects Daughter', cursive;
+        // font-family: 'Architects Daughter', cursive;
+        font-weight: bold;
         color: $color2;
     }
 
     #modal-operations{
         button{
-            padding:0;
+            padding: 10px !important;
+            font-weight: bold;
         }
     }
 }

@@ -122,7 +122,7 @@ $("#btn-recommended").click(function(){
                     //creating dynamic indicators
                     $(`#carousel-indicators`).append(
                         `
-                            <button type="button" id="indicator-${recommendedCounter}" class="" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${recommendedCounter}" aria-label="Slide ${slide}"></button>
+                            <button type="button" id="indicator-${recommendedCounter}" class="" data-bs-target="#carousel" data-bs-slide-to="${recommendedCounter}" aria-label="Slide ${slide}"></button>
                         `
                     )
 
@@ -293,7 +293,7 @@ $("#btn-recommended").click(function(){
                 <div id="card-title-${index}" class="recipe-title w-100 d-flex flex-row justify-content-between">
                     <h4 id="recipe-id-${index}" class="d-flex flex-row justify-content-center align-items-center mb-0">#${index}</h4>
                     <h2 id="recipe-name-${index}" class="recipe-name d-inline w-100 mb-0">${recipe.cocktailName}</h2>
-                    <button class="d-inline btn btn-secondary border-top-0 border-bottom-0 border-end-0 rounded-0" id="btn-edit-recipe-name-${index}" title="Edit recipe name"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                    <button class="d-inline btn border-top-0 border-bottom-0 border-end-0 rounded-0 btn-edit" id="btn-edit-recipe-name-${index}" title="Edit recipe name"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 </div>
     
                 <div id="card-body" class="d-flex flex-row">

@@ -48,7 +48,7 @@ body {
     border: black 3px solid; }
     #recipes-grid .card-recipe .recipe-title {
       font-family: 'Architects Daughter', cursive;
-      background-color: #6f87df;
+      background-color: #a9b3bd;
       border-bottom: solid black;
       text-align: center; }
     #recipes-grid .card-recipe h2 {
@@ -89,14 +89,6 @@ body {
   #alertZone #btn-close-alert {
     border: none; }
 
-.btn-delete-ingredient {
-  height: fit-content; }
-
-.list-ingr-item {
-  word-wrap: break-word;
-  margin-bottom: 4px;
-  text-align: left; }
-
 .pop-up {
   background-color: rgba(48, 48, 48, 0.5);
   position: fixed;
@@ -132,16 +124,27 @@ body {
 #btn-info {
   cursor: pointer; }
 
-#carouselExampleIndicators button {
-  border: none; }
-
-#favorite-title {
-  font-family: 'Architects Daughter', cursive;
-  font-weight: bold;
-  text-transform: uppercase; }
-
 #pop-carousel {
-  height: 30%; }
+  height: 30%;
+  border: solid 2px black;
+  border-radius: 3px; }
+  #pop-carousel #carousel button {
+    border: none; }
+  #pop-carousel #recommendation-title {
+    font-family: 'Architects Daughter', cursive;
+    font-weight: bold;
+    text-transform: uppercase; }
+
+.btn-edit {
+  background-color: slategrey; }
+
+.btn-delete-ingredient {
+  height: fit-content; }
+
+.list-ingr-item {
+  word-wrap: break-word;
+  margin-bottom: 4px;
+  text-align: left; }
 
 #brand {
   color: #3053D1;

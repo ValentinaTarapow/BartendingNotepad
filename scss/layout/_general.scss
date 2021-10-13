@@ -62,7 +62,7 @@ body{
 
         .recipe-title{
             font-family: 'Architects Daughter', cursive;
-            background-color: lighten($color2, 15%);
+            background-color: lighten( slategrey, 20%);
             border-bottom: solid black;
             text-align: center;
         }
@@ -109,7 +109,6 @@ body{
 }
 
 #alertZone{
-
     #alert-added, #alert-deleted{
         display: none;
     }
@@ -123,16 +122,6 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: center;
-}
-
-.btn-delete-ingredient{
-    height: fit-content;
-}
-
-.list-ingr-item{
-    word-wrap: break-word;
-    margin-bottom: 4px;
-    text-align: left;
 }
 
 .pop-up{
@@ -149,11 +138,9 @@ body{
     visibility: hidden;
 }
 
-
 .show {
     visibility: visible;
 }
-
 
 .pop-modal{
     border: solid 1px $color2;
@@ -172,8 +159,6 @@ body{
         color: $color2;
     }
 
-
-
     #modal-operations{
         button{
             padding:0;
@@ -185,18 +170,37 @@ body{
     cursor: pointer;
 }
 
-#carouselExampleIndicators{
-    button{
-        border: none;
-    }
-}
-
-#favorite-title{
-    font-family: 'Architects Daughter', cursive;
-    font-weight: bold;
-    text-transform: uppercase;
-}
 
 #pop-carousel{
     height: 30%;
+    border: solid 2px black;
+    border-radius: 3px;
+
+    #carousel{
+        button{
+            border: none;
+        }
+    }
+
+    #recommendation-title{
+        font-family: 'Architects Daughter', cursive;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+
+
+
+.btn-edit{
+    background-color: slategrey;
+}
+
+.btn-delete-ingredient{
+    height: fit-content;
+}
+
+.list-ingr-item{
+    word-wrap: break-word;
+    margin-bottom: 4px;
+    text-align: left;
 }

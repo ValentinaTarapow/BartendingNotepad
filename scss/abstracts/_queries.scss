@@ -2,14 +2,42 @@
 /*iPhone4 ----------- */
 @media only screen and (max-width : 319px) {
     #recipes-grid {
-        grid-template-areas: "a";
+        grid-template-areas: "a" !important;
         .card-recipe{
-            width: 85vw;
+            width: 90vh !important;
         }
     }
 
     #brand{
-        font-size: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .operations{
+        #btn-new-recipe, #btn-delete-all , #btn-recommended{
+            padding: 6px;
+        }
+    }
+
+    .pop-modal{
+        width: 50vh !important;
+    }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+
+    #recipes-main{
+        #recipes-grid{
+            grid-template-areas: "a" !important;
+        }
+    
+        .card-recipe{
+            width: 90vh !important;
+        }
+    }
+
+    #brand{
+        font-size: 1.5rem;
     }
 
     .operations{
@@ -19,28 +47,12 @@
     }
 }
 
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen
-and (min-width : 320px) and (max-width : 480px) {
-    #recipes-grid {
-        grid-template-areas: "a";
-
-        .card-recipe{
-            width: 85vw;
-        }
-    }
-
-    #brand{
-        font-size: 1rem;
-    }
-}
-
 @media only screen and (min-width: 481px) and (max-width: 767px) {
     #recipes-grid {
-        grid-template-areas: "a";
+        grid-template-areas: "a" !important;
 
         .card-recipe{
-            width: 85vw;
+            width: 90vw !important;
         }
     }
 }
@@ -48,10 +60,10 @@ and (min-width : 320px) and (max-width : 480px) {
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
     #recipes-grid {
-        grid-template-areas: "a";
+        grid-template-areas: "a" !important;
 
         .card-recipe{
-            width: 85vw;
+            width: 85vw !important;
         }
     }
 }

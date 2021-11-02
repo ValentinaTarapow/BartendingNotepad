@@ -332,7 +332,7 @@ $("#btn-recommended").click(function(){
                         <i class="fa fa-times" aria-hidden="true" title="Delete ingredient"></i>
                     </button> 
 
-                    ${storageIngr.ingredientName} (${storageIngr.alcoholContent}%Alc./Vol.) - ${storageIngr.amount} ${storageIngr.measure}
+                    ${storageIngr.ingredientName} (${storageIngr.alcoholContent} %Alc./Vol.) - ${storageIngr.amount} ${storageIngr.measure}
                 </li> 
             `);
 
